@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Finder – Achetez et vendez d’occasion en Côte d’Ivoire</title>
+<meta name="description" content="Finder : petites annonces d’articles d’occasion en Côte d’Ivoire. Téléphones, vêtements, électroménager à Abidjan, Yamoussoukro, Bouaké et partout dans le pays.">
+<style>
+:root{--ink:#171717;--mut:#757575;--t:#007782;--line:#e6e6e6;--f:#f5f5f5}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:#fff;color:var(--ink);line-height:1.5}
+.top{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;z-index:5}
+.logo{font-weight:700;font-size:1.6rem;color:var(--t);text-decoration:none}
+nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+button,select,input,textarea{font:inherit}
+button{cursor:pointer;border-radius:4px;border:1px solid var(--t);padding:9px 14px;background:#fff;color:var(--t)}
+.pri{background:var(--t);color:#fff;font-weight:500}
+.pri:hover{background:#006069}
+:focus-visible{outline:3px solid #7FC4CB;outline-offset:2px}
+main{max-width:1100px;margin:auto;padding:0 16px 48px}
+.hero{padding:24px 0 12px}
+h1{font-size:clamp(1.5rem,4.5vw,2.2rem);line-height:1.15;font-weight:700;margin:0 0 16px;max-width:18em}
+#f{display:grid;gap:8px;grid-template-columns:1fr 1fr}
+#f input,#f button{grid-column:1/-1}
+input,select,textarea{width:100%;padding:11px 12px;border:1px solid var(--f);border-radius:4px;background:var(--f);color:var(--ink)}
+@media(min-width:760px){#f{grid-template-columns:2fr 1fr 1fr 1fr auto}#f input,#f button{grid-column:auto}}
+.msg{color:var(--mut);min-height:1.5em;margin:8px 0}
+#back{margin-bottom:12px}
+#grid{display:grid;gap:16px 12px;grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+.card{background:#fff;cursor:pointer;position:relative}
+.card img,.ph{width:100%;aspect-ratio:3/4;object-fit:cover;background:var(--f);display:block;border-radius:4px}
+.card div{padding:8px 0}
+.card b{color:var(--ink)}
+.card h3{font-size:.95rem;margin:2px 0;font-weight:400;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.card small,.meta{color:var(--mut)}
+.card small{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.heart{position:absolute;top:8px;right:8px;width:36px;height:36px;padding:0;border-radius:50%;border:0;background:#fff;color:#bbb;font-size:1.2rem;line-height:36px;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.heart.on{color:var(--t)}
+dialog{border:0;border-radius:8px;padding:20px;width:min(94vw,480px);max-height:90vh;color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+dialog h2{margin:0 0 12px}
+label{display:block;margin:10px 0 4px;font-weight:600}
+.row{display:flex;gap:8px;margin-top:14px}
+.row button{flex:1}
+#dc img{width:100%;border-radius:4px;margin-bottom:8px}
+.pr{font-size:1.4rem;font-weight:700;margin:4px 0}
+.seller{margin:10px 0 0}
+.seebtn{width:100%;margin-top:8px}
+.wa{display:block;text-align:center;text-decoration:none;padding:12px;border-radius:4px;margin-top:8px}
+.del{width:100%;margin-top:8px;color:#B3261E;border-color:#B3261E}
+.safe{font-size:.9rem;color:var(--mut);margin-top:10px}
+.err{color:#B3261E;min-height:1.4em}
+#mb{display:flex;flex-direction:column;gap:6px;max-height:50vh;overflow:auto;margin:8px 0}
+.b{max-width:80%;padding:8px 12px;border-radius:12px;background:var(--f);align-self:flex-start;white-space:pre-wrap;word-break:break-word}
+.b.me{background:var(--t);color:#fff;align-self:flex-end}
+#mf input{flex:3}
+.conv{display:block;width:100%;text-align:left;margin-bottom:8px;color:var(--ink);border-color:var(--line)}
+.dot{background:var(--t);color:#fff;border-radius:10px;padding:0 7px;font-size:.8rem}
+#toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--t);color:#fff;padding:12px 18px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.3);z-index:20;cursor:pointer;max-width:90vw;text-align:center}
+#toast[hidden]{display:none}
+footer{text-align:center;color:var(--mut);padding:24px 16px;font-size:.9rem}
+</style>
+</head>
+<body>
+<header class="top">
+<a class="logo" href="./">Finder</a>
+<nav>
+<button id="mine" hidden>Mes annonces</button>
+<button id="fav" hidden>Favoris</button>
+<button id="msgs" hidden>Messages</button>
+<button id="pro" hidden>Mon profil</button>
+<button id="auth">Connexion</button>
+<button id="sell" class="pri">Vendre</button>
+</nav>
+</header>
+<main>
+<section class="hero">
+<h1>Vendez ce que vous n’utilisez plus. Trouvez ce qu’il vous faut.</h1>
+<form id="f">
+<input id="q" type="search" placeholder="Que cherchez-vous ? iPhone, robe, Samsung…" aria-label="Rechercher">
+<select id="fc" aria-label="Catégorie"></select>
+<select id="fv" aria-label="Ville"></select>
+<select id="fe" aria-label="État"></select>
+<button class="pri">Chercher</button>
+</form>
+</section>
+<button id="back" hidden>Voir toutes les annonces</button>
+<p id="msg" class="msg" role="status"></p>
+<div id="grid"></div>
+</main>
+<footer>Finder, les petites annonces d’occasion en Côte d’Ivoire. Rencontrez-vous dans un lieu public et payez à la remise de l’article.</footer>
+<div id="toast" hidden role="status"></div>
+<dialog id="da">
+<h2>Connexion</h2>
+<form id="af">
+<label for="em">Email</label><input id="em" name="em" type="email" required autocomplete="email">
+<label for="pw">Mot de passe (6 caractères minimum)</label><input id="pw" name="pw" type="password" minlength="6" required autocomplete="current-password">
+<p id="am" class="err" role="alert"></p>
+<div class="row"><button class="pri">Se connecter</button><button type="button" id="su">Créer un compte</button></div>
+<div class="row"><button type="button" data-x>Fermer</button></div>
+</form>
+</dialog>
+<dialog id="dp">
+<h2>Mon profil</h2>
+<form id="pf">
+<label for="pn">Nom affiché</label><input id="pn" name="nom" required minlength="2" maxlength="40" placeholder="Ex : Awa K.">
+<label for="pv">Ville</label><select id="pv" name="pville"></select>
+<label for="pb">Présentation (facultatif)</label><textarea id="pb" name="bio" rows="3" maxlength="200" placeholder="Ex : Je vends des vêtements en très bon état."></textarea>
+<p id="pm" class="err" role="alert"></p>
+<div class="row"><button class="pri">Enregistrer</button><button type="button" data-x>Fermer</button></div>
+</form>
+</dialog>
+<dialog id="ds">
+<h2>Vendre un article</h2>
+<form id="sf">
+<label for="ttl">Titre</label><input id="ttl" name="ttl" required minlength="3" maxlength="100" placeholder="Ex : Samsung A14, 64 Go">
+<label for="prix">Prix en FCFA</label><input id="prix" name="prix" type="number" min="0" inputmode="numeric" required>
+<label for="sc">Catégorie</label><select id="sc" name="cat"></select>
+<label for="se">État de l’article</label><select id="se" name="etat"></select>
+<label for="mq">Marque (facultatif)</label><input id="mq" name="marque" maxlength="40" placeholder="Ex : Samsung, Nike, Zara">
+<label for="sv">Ville</label><select id="sv" name="ville"></select>
+<label for="desc">Description</label><textarea id="desc" name="desc" rows="3" placeholder="Détails, taille, raison de la vente…"></textarea>
+<label for="wa">Votre numéro WhatsApp</label><input id="wa" name="wa" type="tel" inputmode="tel" required placeholder="07 00 00 00 00">
+<label for="ph">Photos (3 maximum)</label><input id="ph" name="photos" type="file" accept="image/*" multiple>
+<p id="sm" class="err" role="alert"></p>
+<div class="row"><button class="pri">Publier l’annonce</button><button type="button" data-x>Fermer</button></div>
+</form>
+</dialog>
+<dialog id="dd"><div id="dc"></div><div class="row"><button type="button" data-x>Fermer</button></div></dialog>
+<dialog id="di"><h2>Messages</h2><div id="il"></div><div class="row"><button type="button" data-x>Fermer</button></div></dialog>
+<dialog id="dm"><h2 id="mt"></h2><div id="mb"></div><form id="mf" class="row"><input id="mi" maxlength="500" required placeholder="Votre message…" autocomplete="off"><button class="pri">Envoyer</button></form><div class="row"><button type="button" data-x>Fermer</button></div></dialog>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+const SB_URL="https://lgaspyiqaqntmsljooba.supabase.co";
+const SB_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxnYXNweWlxYXFudG1zbGpvb2JhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI5NTcwOTcsImV4cCI6MjEwODUzMzA5N30.ArQcp2h2dGHGe3Y8pQOl8eXJmLjpyzQfyrN3B2oiWQg";
+const sb=supabase.createClient(SB_URL,SB_KEY);
+const CATS=["Téléphones","Vêtements","Chaussures","Électroménager","Meubles","Informatique","Véhicules et motos","Bébé et enfants","Autres"];
+const CITIES=["Abidjan","Yamoussoukro","Bouaké","Daloa","San-Pédro","Korhogo","Man","Autre ville"];
+const ETATS=["Neuf avec étiquette","Neuf sans étiquette","Très bon état","Bon état","Satisfaisant"];
+const $=s=>document.querySelector(s);
+const BASE=document.title;
+let user=null,items=[],mode="all",favs=new Set(),me=null,pro={},sellerId=null,needSell=false,chat=null,tm=null,lastN=-1,nt=null,unread=0,first=true;
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fcfa=n=>Number(n).toLocaleString("fr-FR")+" FCFA";
+const wa=n=>{const d=n.replace(/\D/g,"");return d.length===10?"225"+d:d};
+const fill=(sel,arr,firstOpt)=>{sel.innerHTML=(firstOpt?`<option value="">${firstOpt}</option>`:"")+arr.map(x=>`<option>${x}</option>`).join("")};
+fill($("#fc"),CATS,"Toutes catégories");fill($("#fv"),CITIES,"Toutes villes");fill($("#fe"),ETATS,"Tous états");
+fill($("#sc"),CATS);fill($("#sv"),CITIES);fill($("#se"),ETATS);fill($("#pv"),CITIES,"Ville (facultatif)");
+document.querySelectorAll("[data-x]").forEach(b=>b.onclick=()=>b.closest("dialog").close());
+$("#dm").onclose=()=>clearInterval(tm);
+const askNotif=()=>{if("Notification" in window&&Notification.permission==="default")Notification.requestPermission()};
+const sub=i=>[i.marque,i.etat].filter(Boolean).join(" · ");
+const card=i=>`<article class="card" data-id="${i.id}">${i.photos&&i.photos[0]?`<img loading="lazy" src="${esc(i.photos[0])}" alt="">`:`<div class="ph"></div>`}<button class="heart${favs.has(i.id)?" on":""}" data-h="${i.id}" aria-label="Ajouter aux favoris">♥</button><div><b>${fcfa(i.price)}</b><h3>${esc(i.title)}</h3><small>${esc(sub(i)||i.city)}</small></div></article>`;
+function labels(){
+$("#mine").textContent=mode==="mine"?"Toutes les annonces":"Mes annonces";
+$("#fav").textContent=mode==="fav"?"Toutes les annonces":"Favoris";
+$("#back").hidden=mode!=="seller";
+}
+function notify(n){
+const t=$("#toast");
+t.textContent=n===1?"Vous avez 1 nouveau message":"Vous avez "+n+" messages non lus";
+t.hidden=false;
+clearTimeout(t._h);t._h=setTimeout(()=>t.hidden=true,6000);
+if("Notification" in window&&Notification.permission==="granted"&&document.hidden)new Notification("Finder",{body:t.textContent});
+}
+async function refreshBadge(){
+if(!user)return;
+const{count}=await sb.from("messages").select("id",{count:"exact",head:true}).eq("receiver_id",user.id).eq("lu",false);
+const n=count||0;
+$("#msgs").textContent=n?"Messages ("+n+")":"Messages";
+document.title=(n?"("+n+") ":"")+BASE;
+if(n>unread||(first&&n>0))notify(n);
+unread=n;first=false;
+}
+async function checkUnread(){
+if($("#dm").open&&chat)await loadChat();
+await refreshBadge();
+}
+$("#toast").onclick=()=>{$("#toast").hidden=true;openInbox()};
+async function loadFavs(){
+const{data}=await sb.from("favoris").select("listing_id");
+favs=new Set((data||[]).map(x=>x.listing_id));
+}
+async function loadMe(){
+const{data}=await sb.from("profils").select("*").eq("user_id",user.id).maybeSingle();
+me=data||null;
+}
+async function load(){
+const m=$("#msg");
+if(mode==="fav"&&!favs.size){items=[];$("#grid").innerHTML="";m.textContent="Aucun favori pour l’instant. Appuyez sur le cœur d’une annonce.";return}
+m.textContent="Chargement…";
+let r=sb.from("listings").select("*").order("created_at",{ascending:false}).limit(60);
+const q=$("#q").value.trim().replace(/[%,()]/g," ");
+if(q)r=r.or(`title.ilike.%${q}%,marque.ilike.%${q}%`);
+if($("#fc").value)r=r.eq("category",$("#fc").value);
+if($("#fv").value)r=r.eq("city",$("#fv").value);
+if($("#fe").value)r=r.eq("etat",$("#fe").value);
+if(mode==="mine"&&user)r=r.eq("user_id",user.id);
+if(mode==="seller")r=r.eq("user_id",sellerId);
+if(mode==="fav")r=r.in("id",[...favs]);
+const{data,error}=await r;
+if(error){m.textContent="Impossible de charger les annonces. Vérifiez votre connexion.";return}
+items=data;
+const ids=[...new Set(data.map(i=>i.user_id))];
+if(ids.length){const{data:ps}=await sb.from("profils").select("*").in("user_id",ids);pro=Object.fromEntries((ps||[]).map(p=>[p.user_id,p]))}
+m.textContent=mode==="seller"?"Annonces de "+(pro[sellerId]?pro[sellerId].nom:"ce vendeur"):(data.length?"":"Aucune annonce pour l’instant. Soyez le premier à vendre !");
+$("#grid").innerHTML=data.map(card).join("");
+}
+function show(i){
+const own=user&&user.id===i.user_id,p=pro[i.user_id];
+const msg=encodeURIComponent("Bonjour, je suis intéressé(e) par « "+i.title+" » sur Finder.");
+$("#dc").innerHTML=(i.photos||[]).map(u=>`<img src="${esc(u)}" alt="">`).join("")+`<h2>${esc(i.title)}</h2><p class="pr">${fcfa(i.price)}</p><p class="meta">${esc([i.category,i.marque,i.etat,i.city].filter(Boolean).join(" · "))}</p><p>${esc(i.description)}</p><p class="seller"><b>${esc(p?p.nom:"Vendeur Finder")}</b>${p&&p.ville?" · "+esc(p.ville):""}</p>${p&&p.bio?`<p class="meta">${esc(p.bio)}</p>`:""}<button class="seebtn" data-u="${i.user_id}">Voir ses annonces</button>`+(own?"":`<button class="chatbtn pri seebtn" data-u="${i.user_id}" data-l="${i.id}" data-t="${esc(i.title)}">Écrire au vendeur</button>`)+`<a class="pri wa" target="_blank" rel="noopener" href="https://wa.me/${esc(i.whatsapp)}?text=${msg}">Contacter sur WhatsApp</a><p class="safe">Rencontrez le vendeur dans un lieu public et payez à la remise de l’article.</p>`+(own?`<button class="del" data-id="${i.id}">Supprimer l’annonce</button>`:"");
+$("#dd").showModal();
+}
+$("#grid").onclick=async e=>{
+const h=e.target.closest(".heart");
+if(h){
+if(!user){$("#da").showModal();return}
+const id=h.dataset.h;
+if(favs.has(id)){favs.delete(id);h.classList.remove("on");await sb.from("favoris").delete().eq("listing_id",id);if(mode==="fav")load()}
+else{favs.add(id);h.classList.add("on");await sb.from("favoris").insert({listing_id:id})}
+return;
+}
+const c=e.target.closest(".card");
+if(c)show(items.find(i=>i.id===c.dataset.id));
+};
+$("#dc").onclick=async e=>{
+const s=e.target.closest(".seebtn:not(.chatbtn)");
+if(s){sellerId=s.dataset.u;mode="seller";$("#dd").close();labels();load();window.scrollTo(0,0);return}
+const c=e.target.closest(".chatbtn");
+if(c){
+if(!user){$("#dd").close();$("#da").showModal();return}
+openChat(c.dataset.l,c.dataset.u,c.dataset.t);return;
+}
+const b=e.target.closest(".del");
+if(!b||!confirm("Supprimer cette annonce ?"))return;
+await sb.from("listings").delete().eq("id",b.dataset.id);
+$("#dd").close();load();
+};
+async function openChat(lid,other,title){
+askNotif();
+chat={lid,other};lastN=-1;
+$("#mt").textContent=title;
+$("#mb").innerHTML="";
+$("#dd").close();$("#di").close();
+$("#dm").showModal();
+await loadChat();
+clearInterval(tm);tm=setInterval(loadChat,5000);
+}
+async function loadChat(){
+if(!chat||!user)return;
+const{data}=await sb.from("messages").select("*").eq("listing_id",chat.lid).or(`sender_id.eq.${chat.other},receiver_id.eq.${chat.other}`).order("created_at");
+if(!data||data.length===lastN)return;
+lastN=data.length;
+const b=$("#mb");
+b.innerHTML=data.map(m=>`<div class="b ${m.sender_id===user.id?"me":""}">${esc(m.body)}</div>`).join("");
+b.scrollTop=b.scrollHeight;
+if(data.some(m=>m.receiver_id===user.id&&!m.lu)){
+await sb.from("messages").update({lu:true}).eq("listing_id",chat.lid).eq("receiver_id",user.id).eq("sender_id",chat.other).eq("lu",false);
+refreshBadge();
+}
+}
+$("#mf").onsubmit=async e=>{
+e.preventDefault();
+const i=$("#mi"),t=i.value.trim();
+if(!t)return;
+i.value="";
+const{error}=await sb.from("messages").insert({listing_id:chat.lid,receiver_id:chat.other,body:t});
+if(error){i.value=t;return}
+loadChat();
+};
+async function openInbox(){
+askNotif();
+$("#il").innerHTML="<p class='meta'>Chargement…</p>";
+$("#di").showModal();
+const{data}=await sb.from("messages").select("*").order("created_at",{ascending:false}).limit(200);
+const seen=new Map();
+for(const m of data||[]){
+const o=m.sender_id===user.id?m.receiver_id:m.sender_id,k=m.listing_id+"|"+o;
+if(!seen.has(k))seen.set(k,{lid:m.listing_id,o,last:m,u:0});
+if(m.receiver_id===user.id&&!m.lu)seen.get(k).u++;
+}
+const list=[...seen.values()];
+if(!list.length){$("#il").innerHTML="<p class='meta'>Aucun message pour l’instant.</p>";return}
+const lids=[...new Set(list.map(x=>x.lid))],uids=[...new Set(list.map(x=>x.o))];
+const[{data:ls},{data:ps}]=await Promise.all([sb.from("listings").select("id,title").in("id",lids),sb.from("profils").select("user_id,nom").in("user_id",uids)]);
+const T=Object.fromEntries((ls||[]).map(x=>[x.id,x.title])),N=Object.fromEntries((ps||[]).map(x=>[x.user_id,x.nom]));
+$("#il").innerHTML=list.map(x=>`<button class="conv" data-l="${x.lid}" data-o="${x.o}" data-t="${esc(T[x.lid]||"Annonce")}">${x.u?`<span class="dot">${x.u}</span> `:""}<b>${esc(N[x.o]||"Utilisateur")}</b> · ${esc(T[x.lid]||"Annonce")}<br><span class="meta">${esc(x.last.body.slice(0,60))}</span></button>`).join("");
+}
+$("#il").onclick=e=>{const c=e.target.closest(".conv");if(c)openChat(c.dataset.l,c.dataset.o,c.dataset.t)};
+$("#msgs").onclick=openInbox;
+$("#f").onsubmit=e=>{e.preventDefault();load()};
+$("#mine").onclick=()=>{mode=mode==="mine"?"all":"mine";labels();load()};
+$("#fav").onclick=()=>{mode=mode==="fav"?"all":"fav";labels();load()};
+$("#back").onclick=()=>{mode="all";labels();load()};
+function openProfile(need){
+needSell=need;
+const f=$("#pf");
+f.nom.value=me?me.nom:"";f.pville.value=me&&me.ville?me.ville:"";f.bio.value=me&&me.bio?me.bio:"";
+$("#pm").textContent=need?"Ajoutez votre nom pour pouvoir vendre.":"";
+$("#dp").showModal();
+}
+$("#pro").onclick=()=>openProfile(false);
+$("#pf").onsubmit=async e=>{
+e.preventDefault();
+const f=e.target,m=$("#pm");
+const row={user_id:user.id,nom:f.nom.value.trim(),ville:f.pville.value||null,bio:f.bio.value.trim()||null};
+const{error}=await sb.from("profils").upsert(row);
+if(error){m.textContent="Enregistrement impossible. Vérifiez le nom (2 caractères minimum).";return}
+me=row;m.textContent="";$("#dp").close();
+if(needSell){needSell=false;$("#ds").showModal()}
+load();
+};
+async function doAuth(signup){
+const f=$("#af"),m=$("#am"),c={email:f.em.value,password:f.pw.value};
+m.textContent="Un instant…";
+const{error}=signup?await sb.auth.signUp(c):await sb.auth.signInWithPassword(c);
+if(error){m.textContent=signup?"Création impossible. Vérifiez l’email et utilisez 6 caractères minimum.":"Email ou mot de passe incorrect.";return}
+if(signup){m.textContent="Compte créé. Si un email de confirmation arrive, ouvrez-le, puis connectez-vous.";return}
+m.textContent="";$("#da").close();
+}
+$("#af").onsubmit=e=>{e.preventDefault();doAuth(false)};
+$("#su").onclick=()=>$("#af").reportValidity()&&doAuth(true);
+$("#auth").onclick=()=>user?sb.auth.signOut():$("#da").showModal();
+$("#sell").onclick=()=>{
+if(!user){$("#da").showModal();return}
+if(!me){openProfile(true);return}
+$("#ds").showModal();
+};
+$("#sf").onsubmit=async e=>{
+e.preventDefault();
+const f=e.target,m=$("#sm"),files=[...f.photos.files].slice(0,3);
+if(files.some(x=>x.size>5e6)){m.textContent="Chaque photo doit faire moins de 5 Mo.";return}
+if(wa(f.wa.value).length<10){m.textContent="Numéro WhatsApp invalide.";return}
+m.textContent="Publication en cours…";
+const urls=[];
+for(const[n,file]of files.entries()){
+const ext=(file.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"");
+const p=`${user.id}/${Date.now()}-${n}.${ext}`;
+const up=await sb.storage.from("photos").upload(p,file);
+if(up.error){m.textContent="L’envoi d’une photo a échoué. Réessayez.";return}
+urls.push(sb.storage.from("photos").getPublicUrl(p).data.publicUrl);
+}
+const{error}=await sb.from("listings").insert({title:f.ttl.value.trim(),price:+f.prix.value,category:f.cat.value,city:f.ville.value,etat:f.etat.value,marque:f.marque.value.trim()||null,description:f.desc.value.trim(),whatsapp:wa(f.wa.value),photos:urls});
+if(error){m.textContent="Publication impossible. Vérifiez les champs.";return}
+f.reset();m.textContent="";$("#ds").close();load();
+};
+sb.auth.onAuthStateChange((_,s)=>{
+user=s&&s.user?s.user:null;
+$("#auth").textContent=user?"Déconnexion":"Connexion";
+for(const id of["#mine","#fav","#pro","#msgs"])$(id).hidden=!user;
+clearInterval(nt);
+setTimeout(async()=>{
+if(user){await loadFavs();await loadMe();first=true;unread=0;await checkUnread();nt=setInterval(checkUnread,10000)}
+else{favs=new Set();me=null;unread=0;first=true;document.title=BASE;$("#msgs").textContent="Messages";$("#toast").hidden=true;if(mode!=="seller")mode="all"}
+labels();
+load();
+},0);
+});
+</script>
+</body>
+</html>
