@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Finder – Achetez et vendez d’occasion en Côte d’Ivoire</title>
+<meta name="description" content="Finder : petites annonces d’articles d’occasion en Côte d’Ivoire. Téléphones, vêtements, électroménager à Abidjan, Yamoussoukro, Bouaké et partout dans le pays.">
+<style>
+:root{--ink:#171717;--mut:#757575;--t:#007782;--line:#e6e6e6;--f:#f5f5f5}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:#fff;color:var(--ink);line-height:1.5}
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:10px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;z-index:5}
+.logo{font-weight:700;font-size:1.6rem;color:var(--t);text-decoration:none}
+#burger{font-size:1.2rem;padding:6px 12px}
+#banner{order:5;flex-basis:100%;text-align:center;font-weight:600;color:var(--t);background:#E6F2F3;border-radius:4px;padding:8px 12px}
+.right{margin-left:auto;display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+button,select,input,textarea{font:inherit}
+button{cursor:pointer;border-radius:4px;border:1px solid var(--t);padding:9px 14px;background:#fff;color:var(--t)}
+.pri{background:var(--t);color:#fff;font-weight:500}
+.pri:hover{background:#006069}
+a{color:var(--t)}
+:focus-visible{outline:3px solid #7FC4CB;outline-offset:2px}
+#side{position:fixed;top:0;left:0;bottom:0;width:260px;background:#fff;border-right:1px solid var(--line);padding:16px 8px;overflow:auto;transform:translateX(-100%);transition:transform .2s;z-index:30}
+body.menu #side{transform:none}
+#ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:25}
+body.menu #ov{display:block}
+#side h4{margin:16px 12px 4px;font-size:.78rem;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
+#side button{display:block;width:100%;text-align:left;border:0;background:none;color:var(--ink);padding:10px 12px;border-radius:4px}
+#side button:hover{background:var(--f)}
+#side button.on{background:#E6F2F3;color:var(--t);font-weight:600}
+main{min-width:0;max-width:1100px;margin:0 auto;padding:0 16px 48px}
+@media(min-width:900px){
+.shell{display:flex;align-items:flex-start}
+#side{position:sticky;top:64px;height:calc(100vh - 64px);flex:0 0 240px;transform:none;z-index:1}
+#burger,#ov{display:none!important}
+#banner{order:0;flex:1;flex-basis:auto}
+main{flex:1}
+}
+#f{display:grid;gap:8px;grid-template-columns:1fr 1fr;padding-top:16px}
+#f input,#f button{grid-column:1/-1}
+input,select,textarea{width:100%;padding:11px 12px;border:1px solid var(--f);border-radius:4px;background:var(--f);color:var(--ink)}
+@media(min-width:760px){#f{grid-template-columns:2fr 1fr 1fr auto}#f input,#f button{grid-column:auto}}
+#sect{font-size:1.2rem;margin:16px 0 4px}
+.msg{color:var(--mut);min-height:1.5em;margin:4px 0 8px}
+#back{margin-bottom:12px}
+#grid{display:grid;gap:16px 12px;grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+.card{background:#fff;cursor:pointer;position:relative}
+.card img,.ph{width:100%;aspect-ratio:3/4;object-fit:cover;background:var(--f);display:block;border-radius:4px}
+.card.sold img,.card.sold .ph{opacity:.45}
+.tag{position:absolute;top:8px;left:8px;background:var(--ink);color:#fff;padding:2px 8px;border-radius:4px;font-size:.8rem}
+.card div{padding:8px 0}
+.card b{color:var(--ink)}
+.card h3{font-size:.95rem;margin:2px 0;font-weight:400;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.card small,.meta{color:var(--mut)}
+.card small{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.heart{position:absolute;top:8px;right:8px;width:36px;height:36px;padding:0;border-radius:50%;border:0;background:#fff;color:#bbb;font-size:1.2rem;line-height:36px;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.heart.on{color:var(--t)}
+body[data-acct="vendeur"] .heart{display:none}
+dialog{border:0;border-radius:8px;padding:20px;width:min(94vw,480px);max-height:90vh;color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+dialog h2{margin:0 0 12px}
+label{display:block;margin:10px 0 4px;font-weight:600}
+.chk{display:flex;gap:8px;align-items:center;font-weight:400;margin:8px 0}
+.chk input{width:auto}
+.lnk{display:inline-block;margin:6px 0}
+.row{display:flex;gap:8px;margin-top:14px}
+.row button{flex:1}
+#dc img{width:100%;border-radius:4px;margin-bottom:8px}
+.pr{font-size:1.4rem;font-weight:700;margin:4px 0}
+.seller{margin:10px 0 0}
+.seebtn,.revbtn,.sbtn{width:100%;margin-top:8px}
+.repbtn{width:100%;margin-top:8px;color:#B3261E;border-color:#B3261E}
+.soldnote{background:var(--f);padding:10px;border-radius:4px;text-align:center;margin-top:8px;font-weight:600}
+.testnote{background:#FFF4E5;border:1px solid #F0D4A8;padding:10px;border-radius:4px;font-size:.9rem}
+.tx,.ord{margin:0;padding:8px 0;border-bottom:1px solid var(--line)}
+.rev{margin:6px 0}
+.stars{color:#E8A317}
+.del{width:100%;margin-top:8px;color:#B3261E;border-color:#B3261E}
+.safe{font-size:.9rem;color:var(--mut);margin-top:10px}
+.err{color:#B3261E;min-height:1.4em}
+#dt h3,#dw h3{margin:16px 0 4px;font-size:1rem}
+#dt ul{margin:4px 0;padding-left:20px}
+#mb{display:flex;flex-direction:column;gap:6px;max-height:50vh;overflow:auto;margin:8px 0}
+.b{max-width:80%;padding:8px 12px;border-radius:12px;background:var(--f);align-self:flex-start;white-space:pre-wrap;word-break:break-word}
+.b.me{background:var(--t);color:#fff;align-self:flex-end}
+.st{display:block;text-align:right;font-size:.7rem;opacity:.85;margin-top:2px}
+#mf input{flex:3}
+.conv{display:block;width:100%;text-align:left;margin-bottom:8px;color:var(--ink);border-color:var(--line)}
+.dot{background:var(--t);color:#fff;border-radius:10px;padding:0 7px;font-size:.8rem}
+#toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--t);color:#fff;padding:12px 18px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.3);z-index:40;cursor:pointer;max-width:90vw;text-align:center}
+#toast[hidden]{display:none}
+footer{text-align:center;color:var(--mut);padding:24px 16px;font-size:.9rem}
+</style>
+</head>
+<body>
+<header class="top">
+<button id="burger" aria-label="Ouvrir le menu">☰</button>
+<a class="logo" href="./">Finder</a>
+<!-- Texte du bandeau : à définir plus tard -->
+<div id="banner">Vendez ce que vous n’utilisez plus. Trouvez ce qu’il vous faut.</div>
+<div class="right">
+<button id="sw" hidden></button>
+<button id="sell" class="pri">Vendre</button>
+<button id="auth">Connexion</button>
+</div>
+</header>
+<div id="ov"></div>
+<div class="shell">
+<aside id="side">
+<div id="acc" hidden>
+<h4>Mon compte</h4>
+<button id="ord"></button>
+<button id="mine">Mes annonces</button>
+<button id="fav">Favoris</button>
+<button id="msgs">Messages</button>
+<button id="wal"></button>
+<button id="pro">Mon profil</button>
+</div>
+<h4>Catégories</h4>
+<div id="cats"></div>
+<h4>Aide</h4>
+<button class="tosl">Conditions et sécurité</button>
+</aside>
+<main>
+<form id="f">
+<input id="q" type="search" placeholder="Que cherchez-vous ? iPhone, robe, Samsung…" aria-label="Rechercher">
+<select id="fv" aria-label="Ville"></select>
+<select id="fe" aria-label="État"></select>
+<button class="pri">Chercher</button>
+</form>
+<h2 id="sect">Toutes les annonces</h2>
+<button id="back" hidden>Voir toutes les annonces</button>
+<p id="msg" class="msg" role="status"></p>
+<div id="grid"></div>
+</main>
+</div>
+<footer>Finder, les petites annonces d’occasion en Côte d’Ivoire. Payez avec le portefeuille Finder et confirmez la réception seulement quand vous avez l’article en main.<br><a href="#" class="tosl">Conditions d’utilisation et sécurité</a></footer>
+<div id="toast" hidden role="status"></div>
+<dialog id="da">
+<h2>Connexion</h2>
+<form id="af">
+<label for="em">Email</label><input id="em" name="em" type="email" required autocomplete="email">
+<label for="pw">Mot de passe (6 caractères minimum)</label><input id="pw" name="pw" type="password" minlength="6" required autocomplete="current-password">
+<label class="chk"><input type="checkbox" id="spw"> Afficher le mot de passe</label>
+<a href="#" id="fg" class="lnk">Mot de passe oublié ?</a>
+<p id="am" class="err" role="alert"></p>
+<div class="row"><button class="pri">Se connecter</button><button type="button" id="su">Créer un compte</button></div>
+<p class="meta">En créant un compte, vous acceptez les <a href="#" class="tosl">conditions d’utilisation</a>.</p>
+<div class="row"><button type="button" data-x>Fermer</button></div>
+</form>
+</dialog>
+<dialog id="dn">
+<h2>Nouveau mot de passe</h2>
+<form id="nf">
+<label for="np">Nouveau mot de passe (6 caractères minimum)</label><input id="np" name="np" type="password" minlength="6" required autocomplete="new-password">
+<label for="nc">Confirmer le mot de passe</label><input id="nc" name="nc" type="password" minlength="6" required autocomplete="new-password">
+<label class="chk"><input type="checkbox" id="snp"> Afficher les mots de passe</label>
+<p id="nm" class="err" role="alert"></p>
+<div class="row"><button class="pri">Enregistrer</button><button type="button" data-x>Fermer</button></div>
+</form>
+</dialog>
+<dialog id="dt">
+<h2>Conditions d’utilisation et sécurité</h2>
+<p>Finder met en relation des vendeurs et des acheteurs d’articles d’occasion en Côte d’Ivoire. Finder n’est pas partie à la vente : nous ne vendons pas les articles, nous ne les vérifions pas et nous ne garantissons ni leur qualité ni le comportement des utilisateurs.</p>
+<h3>Comptes client et vendeur</h3>
+<ul>
+<li>Un compte client sert à acheter. Un compte vendeur sert à vendre. Vous pouvez passer de l’un à l’autre quand vous voulez.</li>
+<li>En compte client, vous ne pouvez pas vendre. En compte vendeur, vous ne pouvez pas acheter.</li>
+<li>Chaque compte a son portefeuille. L’argent d’un achat est bloqué jusqu’à ce que l’acheteur confirme la réception.</li>
+</ul>
+<h3>Paiements et commission</h3>
+<ul>
+<li>Toute vente conclue grâce à Finder doit être payée sur Finder, avec le portefeuille.</li>
+<li>Finder prélève une commission de <span class="cr">10</span> % sur le prix de chaque vente. Elle est payée par le vendeur et déduite de la somme qu’il reçoit.</li>
+<li>Payer, ou demander de payer, en dehors de Finder pour éviter la commission est interdit et peut entraîner la fermeture du compte.</li>
+</ul>
+<h3>Règles pour tous</h3>
+<ul>
+<li>Une personne, un compte, avec des informations vraies.</li>
+<li>Soyez honnête : photos réelles de l’article, description et prix exacts.</li>
+<li>Restez respectueux dans les messages et les avis. Les avis doivent refléter une vraie expérience.</li>
+</ul>
+<h3>Articles interdits</h3>
+<ul>
+<li>Armes, munitions et explosifs.</li>
+<li>Drogues, médicaments et produits dangereux.</li>
+<li>Articles volés, contrefaits ou de provenance douteuse.</li>
+<li>Documents d’identité, comptes, cartes bancaires ou données personnelles.</li>
+<li>Tout contenu illégal, trompeur ou choquant.</li>
+</ul>
+<h3>Conseils de sécurité</h3>
+<ul>
+<li>Ne donnez jamais de code reçu par SMS ni de mot de passe.</li>
+<li>Confirmez la réception seulement quand vous avez l’article en main et que vous l’avez vérifié.</li>
+<li>Méfiez-vous des prix trop bas et des demandes de paiement en dehors de Finder.</li>
+<li>Gardez vos échanges sur Finder pour avoir une trace.</li>
+</ul>
+<h3>Vos informations</h3>
+<p>Votre nom affiché, votre ville, votre présentation, vos annonces et vos avis sont visibles par les visiteurs du site. Votre email n’est pas affiché.</p>
+<h3>Signalement et sanctions</h3>
+<p>Utilisez le bouton « Signaler cette annonce » si vous voyez une arnaque ou un article interdit. Finder peut retirer une annonce ou fermer un compte qui ne respecte pas ces règles.</p>
+<div class="row"><button type="button" data-x>Fermer</button></div>
+</dialog>
+<dialog id="dg">
+<h2>Signaler cette annonce</h2>
+<form id="rgf">
+<label for="gm">Motif</label>
+<select id="gm" name="motif"><option>Arnaque ou faux article</option><option>Article interdit</option><option>Prix trompeur</option><option>Photos non conformes</option><option>Autre</option></select>
+<label for="gd">Détails (facultatif)</label><textarea id="gd" name="det" rows="3" maxlength="300" placeholder="Que s’est-il passé ?"></textarea>
+<p id="rgm" class="err" role="alert"></p>
+<div class="row"><button class="pri">Envoyer le signalement</button><button type="button" data-x>Fermer</button></div>
+</form>
+</dialog>
+<dialog id="dp">
+<h2>Mon profil</h2>
+<form id="pf">
+<div id="pmw"><label for="pmo">Je veux d’abord</label><select id="pmo" name="pmode"><option value="client">Acheter (compte client)</option><option value="vendeur">Vendre (compte vendeur)</option></select></div>
+<label for="pn">Nom affiché</label><input id="pn" name="nom" required minlength="2" maxlength="40" placeholder="Ex : Awa K.">
+<label for="pv">Ville</label><select id="pv" name="pville"></select>
+<label for="pb">Présentation (facultatif)</label><textarea id="pb" name="bio" rows="3" maxlength="200" placeholder="Ex : Je vends des vêtements en très bon état."></textarea>
+<p id="pm" class="err" role="alert"></p>
+<div class="row"><button class="pri">Enregistrer</button><button type="button" data-x>Fermer</button></div>
+</form>
+</dialog>
+<dialog id="ds">
+<h2>Vendre un article</h2>
+<form id="sf">
+<label for="ttl">Titre</label><input id="ttl" name="ttl" required minlength="3" maxlength="100" placeholder="Ex : Samsung A14, 64 Go">
+<label for="prix">Prix en FCFA</label><input id="prix" name="prix" type="number" min="0" inputmode="numeric" required>
+<p id="cm" class="meta"></p>
+<label for="sc">Catégorie</label><select id="sc" name="cat"></select>
+<label for="se">État de l’article</label><select id="se" name="etat"></select>
+<label for="mq">Marque (facultatif)</label><input id="mq" name="marque" maxlength="40" placeholder="Ex : Samsung, Nike, Zara">
+<label for="sv">Ville</label><select id="sv" name="ville"></select>
+<label for="desc">Description</label><textarea id="desc" name="desc" rows="3" placeholder="Détails, taille, raison de la vente…"></textarea>
+<label for="ph">Photos (3 maximum)</label><input id="ph" name="photos" type="file" accept="image/*" multiple>
+<p id="sm" class="err" role="alert"></p>
+<div class="row"><button class="pri">Publier l’annonce</button><button type="button" data-x>Fermer</button></div>
+</form>
+</dialog>
+<dialog id="dd"><div id="dc"></div><div class="row"><button type="button" data-x>Fermer</button></div></dialog>
+<dialog id="dw">
+<h2 id="wt">Portefeuille</h2>
+<p class="testnote">Mode test : l’argent est fictif. Aucun vrai paiement Orange Money, MTN ou Wave n’est effectué.</p>
+<p class="pr" id="wb"></p>
+<form id="wf" class="row"><input id="wi" type="number" min="1" inputmode="numeric" placeholder="Montant en FCFA"><button id="wbtn" class="pri"></button></form>
+<p id="wm" class="err" role="alert"></p>
+<h3>Dernières opérations</h3>
+<div id="wl"></div>
+<div class="row"><button type="button" data-x>Fermer</button></div>
+</dialog>
+<dialog id="do"><h2 id="ot"></h2><div id="ol"></div><div class="row"><button type="button" data-x>Fermer</button></div></dialog>
+<dialog id="dr">
+<h2 id="rt">Laisser un avis</h2>
+<form id="rf">
+<label for="rn">Note</label>
+<select id="rn" name="note"><option value="5">5 ★ Excellent</option><option value="4">4 ★ Très bien</option><option value="3">3 ★ Bien</option><option value="2">2 ★ Moyen</option><option value="1">1 ★ Mauvais</option></select>
+<label for="rc">Commentaire (facultatif)</label><textarea id="rc" name="com" rows="3" maxlength="300" placeholder="Article conforme ? Vendeur sérieux ?"></textarea>
+<p id="rm" class="err" role="alert"></p>
+<div class="row"><button class="pri">Envoyer l’avis</button><button type="button" data-x>Fermer</button></div>
+</form>
+</dialog>
+<dialog id="di"><h2>Messages</h2><div id="il"></div><div class="row"><button type="button" data-x>Fermer</button></div></dialog>
+<dialog id="dm"><h2 id="mt"></h2><p class="testnote">Pour votre sécurité, ne payez jamais en dehors de Finder et ne partagez pas de numéro de téléphone.</p><div id="mb"></div><form id="mf" class="row"><input id="mi" maxlength="500" required placeholder="Votre message…" autocomplete="off"><button class="pri">Envoyer</button></form><div class="row"><button type="button" data-x>Fermer</button></div></dialog>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+const SB_URL="https://lgaspyiqaqntmsljooba.supabase.co";
+const SB_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxnYXNweWlxYXFudG1zbGpvb2JhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI5NTcwOTcsImV4cCI6MjEwODUzMzA5N30.ArQcp2h2dGHGe3Y8pQOl8eXJmLjpyzQfyrN3B2oiWQg";
+const sb=supabase.createClient(SB_URL,SB_KEY);
+const CATS=["Vêtements","Électroménager","Téléphones","Chaussures","Informatique","Meubles","Véhicules et motos","Bébé et enfants","Autres"];
+const CITIES=["Abidjan","Yamoussoukro","Bouaké","Daloa","San-Pédro","Korhogo","Man","Autre ville"];
+const ETATS=["Neuf avec étiquette","Neuf sans étiquette","Très bon état","Bon état","Satisfaisant"];
+const TT={recharge_test:"Recharge (test)",achat:"Achat",vente:"Vente",commission:"Commission Finder",remboursement:"Remboursement",retrait_test:"Retrait (test)"};
+const ST={paye:"Payé, en attente de confirmation de réception",livre:"Terminé",annule:"Annulé et remboursé"};
+const ERR={"solde insuffisant":"Solde insuffisant. Rechargez votre portefeuille.","mode client requis":"Passez en compte client pour faire cette action.","article deja vendu":"Cet article est déjà vendu.","commande deja traitee":"Cette commande est déjà traitée.","vous ne pouvez pas acheter":"Vous ne pouvez pas acheter votre propre article."};
+const $=s=>document.querySelector(s);
+const BASE=document.title;
+let user=null,items=[],mode="all",cat="",acct="client",wbal=0,comm=10,favs=new Set(),me=null,pro={},R={},sellerId=null,revSeller=null,repListing=null,needProfile=false,recov=false,chat=null,tm=null,lastN="",nt=null,unread=0,first=true;
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fcfa=n=>Number(n).toLocaleString("fr-FR")+" FCFA";
+const pct=()=>String(comm).replace(".",",");
+const err=e=>{const m=(e&&e.message)||"";for(const k in ERR)if(m.includes(k))return ERR[k];return "Opération impossible. Réessayez."};
+const fill=(sel,arr,firstOpt)=>{sel.innerHTML=(firstOpt?`<option value="">${firstOpt}</option>`:"")+arr.map(x=>`<option>${x}</option>`).join("")};
+fill($("#fv"),CITIES,"Toutes villes");fill($("#fe"),ETATS,"Tous états");
+fill($("#sc"),CATS);fill($("#sv"),CITIES);fill($("#se"),ETATS);fill($("#pv"),CITIES,"Ville (facultatif)");
+document.querySelectorAll("[data-x]").forEach(b=>b.onclick=()=>b.closest("dialog").close());
+document.querySelectorAll(".tosl").forEach(a=>a.onclick=e=>{e.preventDefault();$("#dt").showModal()});
+$("#dm").onclose=()=>clearInterval(tm);
+$("#dn").onclose=()=>{recov=false};
+$("#burger").onclick=()=>document.body.classList.toggle("menu");
+$("#ov").onclick=()=>document.body.classList.remove("menu");
+$("#side").addEventListener("click",e=>{if(e.target.closest("button"))document.body.classList.remove("menu")});
+async function loadParams(){
+const{data}=await sb.from("parametres").select("valeur").eq("cle","commission_pct").maybeSingle();
+if(data)comm=Number(data.valeur);
+document.querySelectorAll(".cr").forEach(x=>x.textContent=pct());
+updNet();
+}
+function updNet(){
+const p=parseInt($("#prix").value,10);
+if(p>0){const c=Math.round(p*comm/100);$("#cm").textContent="Commission Finder ("+pct()+" %) : "+fcfa(c)+" · Vous recevrez "+fcfa(p-c)}
+else $("#cm").textContent="Finder prélève "+pct()+" % sur chaque vente.";
+}
+$("#prix").oninput=updNet;
+const askNotif=()=>{if("Notification" in window&&Notification.permission==="default")Notification.requestPermission()};
+const sub=i=>[i.marque,i.etat].filter(Boolean).join(" · ");
+const rt=u=>R[u]?" · ★ "+(R[u].s/R[u].n).toFixed(1).replace(".",",")+" ("+R[u].n+")":"";
+const card=i=>`<article class="card${i.vendu?" sold":""}" data-id="${i.id}">${i.photos&&i.photos[0]?`<img loading="lazy" src="${esc(i.photos[0])}" alt="">`:`<div class="ph"></div>`}${i.vendu?`<span class="tag">Vendu</span>`:""}<button class="heart${favs.has(i.id)?" on":""}" data-h="${i.id}" aria-label="Ajouter aux favoris">♥</button><div><b>${fcfa(i.price)}</b><h3>${esc(i.title)}</h3><small>${esc(sub(i)||i.city)}${rt(i.user_id)}</small></div></article>`;
+function renderSide(){
+const L=["Toutes les annonces",...CATS];
+$("#cats").innerHTML=L.map((c,i)=>`<button class="cat${mode==="all"&&(i?cat===c:!cat)?" on":""}" data-c="${i?esc(c):""}">${esc(c)}</button>`).join("");
+}
+$("#cats").onclick=e=>{const b=e.target.closest(".cat");if(!b)return;cat=b.dataset.c;mode="all";labels();load();window.scrollTo(0,0)};
+function labels(){
+$("#back").hidden=mode!=="seller";
+$("#sect").textContent=mode==="mine"?"Mes annonces":mode==="fav"?"Mes favoris":mode==="seller"?"Annonces de ce vendeur":(cat||"Toutes les annonces");
+$("#mine").classList.toggle("on",mode==="mine");
+$("#fav").classList.toggle("on",mode==="fav");
+renderSide();
+}
+function applyUI(){
+const c=acct==="client";
+document.body.dataset.acct=user?acct:"";
+$("#acc").hidden=!user;
+$("#mine").hidden=c;
+$("#fav").hidden=!c;
+$("#sell").hidden=!!(user&&c);
+$("#sw").hidden=!user;
+$("#sw").textContent=c?"Compte client ⇄ Vendeur":"Compte vendeur ⇄ Client";
+$("#ord").textContent=c?"Mes achats":"Mes ventes";
+$("#wal").textContent="Portefeuille : "+fcfa(wbal);
+}
+async function loadWallet(){
+if(!user){wbal=0;return}
+const{data}=await sb.from("portefeuilles").select("solde").eq("role",acct).maybeSingle();
+wbal=data?data.solde:0;
+}
+function notify(n){
+const t=$("#toast");
+t.textContent=n===1?"Vous avez 1 nouveau message":"Vous avez "+n+" messages non lus";
+t.hidden=false;
+clearTimeout(t._h);t._h=setTimeout(()=>t.hidden=true,6000);
+if("Notification" in window&&Notification.permission==="granted"&&document.hidden)new Notification("Finder",{body:t.textContent});
+}
+async function refreshBadge(){
+if(!user)return;
+const{count}=await sb.from("messages").select("id",{count:"exact",head:true}).eq("receiver_id",user.id).eq("lu",false);
+const n=count||0;
+$("#msgs").textContent=n?"Messages ("+n+")":"Messages";
+document.title=(n?"("+n+") ":"")+BASE;
+if(n>unread||(first&&n>0))notify(n);
+unread=n;first=false;
+}
+async function checkUnread(){
+if($("#dm").open&&chat)await loadChat();
+await refreshBadge();
+}
+$("#toast").onclick=()=>{$("#toast").hidden=true;openInbox()};
+async function loadFavs(){
+const{data}=await sb.from("favoris").select("listing_id");
+favs=new Set((data||[]).map(x=>x.listing_id));
+}
+async function loadMe(){
+const{data}=await sb.from("profils").select("*").eq("user_id",user.id).maybeSingle();
+me=data||null;
+}
+async function load(){
+const m=$("#msg");
+if(mode==="fav"&&!favs.size){items=[];$("#grid").innerHTML="";m.textContent="Aucun favori pour l’instant. Appuyez sur le cœur d’une annonce.";return}
+m.textContent="Chargement…";
+let r=sb.from("listings").select("*").order("created_at",{ascending:false}).limit(60);
+const q=$("#q").value.trim().replace(/[%,()]/g," ");
+if(q)r=r.or(`title.ilike.%${q}%,marque.ilike.%${q}%`);
+if(cat&&mode==="all")r=r.eq("category",cat);
+if($("#fv").value)r=r.eq("city",$("#fv").value);
+if($("#fe").value)r=r.eq("etat",$("#fe").value);
+if(mode==="mine"&&user)r=r.eq("user_id",user.id);
+if(mode==="seller")r=r.eq("user_id",sellerId);
+if(mode==="fav")r=r.in("id",[...favs]);
+const{data,error}=await r;
+if(error){m.textContent="Impossible de charger les annonces. Vérifiez votre connexion.";return}
+items=data;
+const ids=[...new Set(data.map(i=>i.user_id))];
+R={};
+if(ids.length){
+const{data:ps}=await sb.from("profils").select("*").in("user_id",ids);
+pro=Object.fromEntries((ps||[]).map(p=>[p.user_id,p]));
+const{data:av}=await sb.from("avis").select("seller_id,note").in("seller_id",ids);
+for(const a of av||[]){const x=R[a.seller_id]||(R[a.seller_id]={s:0,n:0});x.s+=a.note;x.n++}
+}
+if(mode==="seller")$("#sect").textContent="Annonces de "+(pro[sellerId]?pro[sellerId].nom:"ce vendeur");
+m.textContent=data.length?"":"Aucune annonce pour l’instant.";
+$("#grid").innerHTML=data.map(card).join("");
+}
+async function loadReviews(u){
+const box=$("#rv");
+if(!box)return;
+const{data}=await sb.from("avis").select("*").eq("seller_id",u).order("created_at",{ascending:false}).limit(50);
+if(!data||!data.length){box.innerHTML="<p class='meta'>Aucun avis pour l’instant.</p>";return}
+const ids=[...new Set(data.map(a=>a.reviewer_id))];
+const{data:ps}=await sb.from("profils").select("user_id,nom").in("user_id",ids);
+const N=Object.fromEntries((ps||[]).map(p=>[p.user_id,p.nom]));
+const avg=data.reduce((s,a)=>s+a.note,0)/data.length;
+box.innerHTML=`<p><b>★ ${avg.toFixed(1).replace(".",",")}</b> · ${data.length} avis</p>`+data.map(a=>`<p class="rev"><span class="stars">${"★".repeat(a.note)}${"☆".repeat(5-a.note)}</span> <b>${esc(N[a.reviewer_id]||"Acheteur")}</b>${a.commentaire?"<br>"+esc(a.commentaire):""}</p>`).join("");
+}
+function show(i){
+const own=user&&user.id===i.user_id,p=pro[i.user_id];
+const buyer=!user||acct==="client";
+let contact="";
+if(i.vendu)contact=`<p class="soldnote">Cet article est vendu</p>`;
+else if(own)contact="";
+else if(!buyer)contact=`<p class="soldnote">Passez en compte client pour acheter ou contacter ce vendeur.</p>`;
+else contact=`<button class="buybtn pri sbtn" data-b="${i.id}">Acheter · ${fcfa(i.price)}</button><button class="chatbtn seebtn" data-u="${i.user_id}" data-l="${i.id}" data-t="${esc(i.title)}">Écrire au vendeur</button>`;
+$("#dc").innerHTML=(i.photos||[]).map(u=>`<img src="${esc(u)}" alt="">`).join("")+`<h2>${esc(i.title)}</h2><p class="pr">${fcfa(i.price)}</p><p class="meta">${esc([i.category,i.marque,i.etat,i.city].filter(Boolean).join(" · "))}</p><p>${esc(i.description)}</p><p class="seller"><b>${esc(p?p.nom:"Vendeur Finder")}</b>${p&&p.ville?" · "+esc(p.ville):""}</p>${p&&p.bio?`<p class="meta">${esc(p.bio)}</p>`:""}<div id="rv"></div><button class="seebtn" data-u="${i.user_id}">Voir ses annonces</button>`+(!own&&buyer?`<button class="revbtn" data-r="${i.user_id}">Laisser un avis</button>`:"")+contact+`<p class="safe">Payez avec le portefeuille Finder et confirmez la réception seulement quand vous avez l’article en main.</p>`+(own?`<button class="del" data-id="${i.id}">Supprimer l’annonce</button>`:`<button class="repbtn" data-l="${i.id}">Signaler cette annonce</button>`);
+$("#dd").showModal();
+loadReviews(i.user_id);
+}
+async function openReview(u){
+revSeller=u;
+const f=$("#rf");
+f.note.value="5";f.com.value="";$("#rm").textContent="";
+$("#rt").textContent="Avis sur "+(pro[u]?pro[u].nom:"ce vendeur");
+const{data}=await sb.from("avis").select("*").eq("seller_id",u).eq("reviewer_id",user.id).maybeSingle();
+if(data){f.note.value=String(data.note);f.com.value=data.commentaire||""}
+$("#dd").close();
+$("#dr").showModal();
+}
+$("#rf").onsubmit=async e=>{
+e.preventDefault();
+const f=e.target,m=$("#rm");
+const{error}=await sb.from("avis").upsert({seller_id:revSeller,reviewer_id:user.id,note:+f.note.value,commentaire:f.com.value.trim()||null},{onConflict:"seller_id,reviewer_id"});
+if(error){m.textContent="Impossible d’envoyer l’avis. Vous pouvez noter un vendeur après lui avoir écrit un message.";return}
+m.textContent="";$("#dr").close();load();
+};
+$("#rgf").onsubmit=async e=>{
+e.preventDefault();
+const f=e.target,m=$("#rgm");
+const{error}=await sb.from("signalements").insert({listing_id:repListing,motif:f.motif.value,details:f.det.value.trim()||null});
+if(error){m.textContent=error.code==="23505"?"Vous avez déjà signalé cette annonce.":"Envoi impossible. Réessayez.";return}
+f.reset();m.textContent="";$("#dg").close();
+alert("Merci, votre signalement a été envoyé.");
+};
+$("#grid").onclick=async e=>{
+const h=e.target.closest(".heart");
+if(h){
+if(!user){$("#da").showModal();return}
+const id=h.dataset.h;
+if(favs.has(id)){favs.delete(id);h.classList.remove("on");await sb.from("favoris").delete().eq("listing_id",id);if(mode==="fav")load()}
+else{favs.add(id);h.classList.add("on");await sb.from("favoris").insert({listing_id:id})}
+return;
+}
+const c=e.target.closest(".card");
+if(c)show(items.find(i=>i.id===c.dataset.id));
+};
+$("#dc").onclick=async e=>{
+const bb=e.target.closest(".buybtn");
+if(bb){
+if(!user){$("#dd").close();$("#da").showModal();return}
+const i=items.find(x=>x.id===bb.dataset.b);
+if(!i)return;
+if(!confirm("Acheter « "+i.title+" » pour "+fcfa(i.price)+" ? Le montant sera retiré de votre portefeuille client et gardé jusqu’à la réception de l’article."))return;
+const{error}=await sb.rpc("acheter",{p_listing:i.id});
+if(error){alert(err(error));return}
+$("#dd").close();
+await loadWallet();applyUI();load();
+alert("Achat effectué. Quand vous avez l’article, confirmez la réception dans « Mes achats ».");
+return;
+}
+const gb=e.target.closest(".repbtn");
+if(gb){
+if(!user){$("#dd").close();$("#da").showModal();return}
+repListing=gb.dataset.l;$("#rgm").textContent="";$("#rgf").reset();
+$("#dd").close();$("#dg").showModal();return;
+}
+const rb=e.target.closest(".revbtn");
+if(rb){
+if(!user){$("#dd").close();$("#da").showModal();return}
+openReview(rb.dataset.r);return;
+}
+const s=e.target.closest(".seebtn:not(.chatbtn)");
+if(s){sellerId=s.dataset.u;mode="seller";$("#dd").close();labels();load();window.scrollTo(0,0);return}
+const c=e.target.closest(".chatbtn");
+if(c){
+if(!user){$("#dd").close();$("#da").showModal();return}
+openChat(c.dataset.l,c.dataset.u,c.dataset.t);return;
+}
+const b=e.target.closest(".del");
+if(!b||!confirm("Supprimer cette annonce ?"))return;
+await sb.from("listings").delete().eq("id",b.dataset.id);
+$("#dd").close();load();
+};
+async function openChat(lid,other,title){
+askNotif();
+chat={lid,other};lastN="";
+$("#mt").textContent=title;
+$("#mb").innerHTML="";
+$("#dd").close();$("#di").close();
+$("#dm").showModal();
+await loadChat();
+clearInterval(tm);tm=setInterval(loadChat,5000);
+}
+async function loadChat(){
+if(!chat||!user)return;
+const{data}=await sb.from("messages").select("*").eq("listing_id",chat.lid).or(`sender_id.eq.${chat.other},receiver_id.eq.${chat.other}`).order("created_at");
+if(!data)return;
+const key=data.length+"-"+data.filter(m=>m.lu).length;
+if(key!==lastN){
+lastN=key;
+const b=$("#mb");
+b.innerHTML=data.map(m=>`<div class="b ${m.sender_id===user.id?"me":""}">${esc(m.body)}${m.sender_id===user.id?`<span class="st">${m.lu?"✓✓ Lu":"✓ Envoyé"}</span>`:""}</div>`).join("");
+b.scrollTop=b.scrollHeight;
+}
+if(data.some(m=>m.receiver_id===user.id&&!m.lu)){
+await sb.from("messages").update({lu:true}).eq("listing_id",chat.lid).eq("receiver_id",user.id).eq("sender_id",chat.other).eq("lu",false);
+refreshBadge();
+}
+}
+$("#mf").onsubmit=async e=>{
+e.preventDefault();
+const i=$("#mi"),t=i.value.trim();
+if(!t)return;
+i.value="";
+const{error}=await sb.from("messages").insert({listing_id:chat.lid,receiver_id:chat.other,body:t});
+if(error){i.value=t;return}
+loadChat();
+};
+async function openInbox(){
+askNotif();
+$("#il").innerHTML="<p class='meta'>Chargement…</p>";
+$("#di").showModal();
+const{data}=await sb.from("messages").select("*").order("created_at",{ascending:false}).limit(200);
+const seen=new Map();
+for(const m of data||[]){
+const o=m.sender_id===user.id?m.receiver_id:m.sender_id,k=m.listing_id+"|"+o;
+if(!seen.has(k))seen.set(k,{lid:m.listing_id,o,last:m,u:0});
+if(m.receiver_id===user.id&&!m.lu)seen.get(k).u++;
+}
+const list=[...seen.values()];
+if(!list.length){$("#il").innerHTML="<p class='meta'>Aucun message pour l’instant.</p>";return}
+const lids=[...new Set(list.map(x=>x.lid))],uids=[...new Set(list.map(x=>x.o))];
+const[{data:ls},{data:ps}]=await Promise.all([sb.from("listings").select("id,title").in("id",lids),sb.from("profils").select("user_id,nom").in("user_id",uids)]);
+const T=Object.fromEntries((ls||[]).map(x=>[x.id,x.title])),N=Object.fromEntries((ps||[]).map(x=>[x.user_id,x.nom]));
+$("#il").innerHTML=list.map(x=>`<button class="conv" data-l="${x.lid}" data-o="${x.o}" data-t="${esc(T[x.lid]||"Annonce")}">${x.u?`<span class="dot">${x.u}</span> `:""}<b>${esc(N[x.o]||"Utilisateur")}</b> · ${esc(T[x.lid]||"Annonce")}<br><span class="meta">${esc(x.last.body.slice(0,60))}</span></button>`).join("");
+}
+$("#il").onclick=e=>{const c=e.target.closest(".conv");if(c)openChat(c.dataset.l,c.dataset.o,c.dataset.t)};
+$("#msgs").onclick=openInbox;
+async function renderWallet(){
+const c=acct==="client";
+$("#wt").textContent=c?"Portefeuille client":"Portefeuille vendeur";
+$("#wb").textContent=fcfa(wbal);
+$("#wbtn").textContent=c?"Recharger (test)":"Retirer (test)";
+const{data}=await sb.from("transactions").select("*").eq("role",acct).order("created_at",{ascending:false}).limit(20);
+$("#wl").innerHTML=(data&&data.length)?data.map(t=>`<p class="tx"><b>${t.montant>0?"+":""}${fcfa(t.montant)}</b> · ${esc(TT[t.type]||t.type)}<br><span class="meta">${new Date(t.created_at).toLocaleString("fr-FR")}</span></p>`).join(""):"<p class='meta'>Aucune opération pour l’instant.</p>";
+}
+async function openWallet(){
+await loadWallet();applyUI();
+$("#wm").textContent="";
+if(!$("#dw").open)$("#dw").showModal();
+await renderWallet();
+}
+$("#wal").onclick=openWallet;
+$("#wf").onsubmit=async e=>{
+e.preventDefault();
+const m=$("#wm"),n=parseInt($("#wi").value,10);
+if(!n||n<=0){m.textContent="Entrez un montant valide.";return}
+m.textContent="Un instant…";
+const{error}=await sb.rpc(acct==="client"?"recharger_test":"retirer_test",{p_montant:n});
+if(error){m.textContent=err(error);return}
+$("#wi").value="";
+await loadWallet();applyUI();m.textContent="";
+await renderWallet();
+};
+async function openOrders(){
+const c=acct==="client";
+$("#ot").textContent=c?"Mes achats":"Mes ventes";
+$("#ol").innerHTML="<p class='meta'>Chargement…</p>";
+if(!$("#do").open)$("#do").showModal();
+const{data}=await sb.from("commandes").select("*").eq(c?"buyer_id":"seller_id",user.id).order("created_at",{ascending:false}).limit(50);
+if(!data||!data.length){$("#ol").innerHTML="<p class='meta'>Aucune commande pour l’instant.</p>";return}
+$("#ol").innerHTML=data.map(o=>`<div class="ord"><b>${esc(o.titre)}</b> · ${fcfa(o.montant)}<br><span class="meta">${!c&&o.commission?"Commission "+fcfa(o.commission)+" · Vous recevrez "+fcfa(o.montant-o.commission)+"<br>":""}${ST[o.statut]||o.statut} · ${new Date(o.created_at).toLocaleDateString("fr-FR")}</span>${o.statut==="paye"?(c?`<button class="sbtn pri" data-ok="${o.id}">J’ai reçu l’article</button>`:`<button class="sbtn" data-no="${o.id}">Annuler la vente</button>`):""}</div>`).join("");
+}
+$("#ord").onclick=openOrders;
+$("#ol").onclick=async e=>{
+const ok=e.target.closest("[data-ok]"),no=e.target.closest("[data-no]");
+if(ok){
+if(!confirm("Confirmez-vous avoir reçu l’article ? Le vendeur sera payé."))return;
+const{error}=await sb.rpc("confirmer_reception",{p_commande:ok.dataset.ok});
+if(error){alert(err(error));return}
+}else if(no){
+if(!confirm("Annuler cette vente ? L’acheteur sera remboursé."))return;
+const{error}=await sb.rpc("annuler_commande",{p_commande:no.dataset.no});
+if(error){alert(err(error));return}
+}else return;
+await loadWallet();applyUI();openOrders();load();
+};
+$("#sw").onclick=async()=>{
+if(!me){openProfile(true);return}
+const n=acct==="client"?"vendeur":"client";
+const{error}=await sb.from("profils").update({mode:n}).eq("user_id",user.id);
+if(error){alert("Changement impossible. Réessayez.");return}
+me.mode=n;acct=n;mode="all";
+await loadWallet();applyUI();labels();load();
+};
+$("#f").onsubmit=e=>{e.preventDefault();load()};
+$("#mine").onclick=()=>{mode="mine";labels();load();window.scrollTo(0,0)};
+$("#fav").onclick=()=>{mode="fav";labels();load();window.scrollTo(0,0)};
+$("#back").onclick=()=>{mode="all";labels();load()};
+function openProfile(need){
+if($("#dp").open||recov)return;
+needProfile=need;
+const f=$("#pf");
+f.nom.value=me?me.nom:"";f.pville.value=me&&me.ville?me.ville:"";f.bio.value=me&&me.bio?me.bio:"";
+$("#pmw").hidden=!!me;
+$("#pm").textContent=need?"Choisissez votre nom et votre type de compte pour continuer.":"";
+$("#dp").showModal();
+}
+$("#pro").onclick=()=>openProfile(false);
+$("#pf").onsubmit=async e=>{
+e.preventDefault();
+const f=e.target,m=$("#pm");
+const row={user_id:user.id,nom:f.nom.value.trim(),ville:f.pville.value||null,bio:f.bio.value.trim()||null,mode:me?me.mode:f.pmode.value};
+const{error}=await sb.from("profils").upsert(row);
+if(error){m.textContent="Enregistrement impossible. Vérifiez le nom (2 caractères minimum).";return}
+me=row;acct=row.mode;needProfile=false;m.textContent="";$("#dp").close();
+await loadWallet();applyUI();labels();load();
+};
+async function doAuth(signup){
+const f=$("#af"),m=$("#am"),c={email:f.em.value,password:f.pw.value};
+m.textContent="Un instant…";
+const{error}=signup?await sb.auth.signUp(c):await sb.auth.signInWithPassword(c);
+if(error){m.textContent=signup?"Création impossible. Vérifiez l’email et utilisez 6 caractères minimum.":"Email ou mot de passe incorrect.";return}
+if(signup){m.textContent="Compte créé. Si un email de confirmation arrive, ouvrez-le, puis connectez-vous.";return}
+m.textContent="";$("#da").close();
+}
+$("#af").onsubmit=e=>{e.preventDefault();doAuth(false)};
+$("#su").onclick=()=>$("#af").reportValidity()&&doAuth(true);
+$("#spw").onchange=e=>{$("#pw").type=e.target.checked?"text":"password"};
+$("#snp").onchange=e=>{const t=e.target.checked?"text":"password";$("#np").type=t;$("#nc").type=t};
+$("#fg").onclick=async e=>{
+e.preventDefault();
+const m=$("#am"),em=$("#em").value.trim();
+if(!em||!em.includes("@")){m.textContent="Entrez votre email ci-dessus, puis appuyez sur « Mot de passe oublié ? ».";return}
+m.textContent="Un instant…";
+const{error}=await sb.auth.resetPasswordForEmail(em,{redirectTo:location.origin+location.pathname});
+m.textContent=error?"Envoi impossible pour le moment. Réessayez dans quelques minutes.":"Si cet email existe, un lien pour changer le mot de passe vient d’être envoyé. Vérifiez aussi vos spams.";
+};
+$("#nf").onsubmit=async e=>{
+e.preventDefault();
+const f=e.target,m=$("#nm");
+if(f.np.value!==f.nc.value){m.textContent="Les deux mots de passe ne sont pas identiques.";return}
+m.textContent="Un instant…";
+const{error}=await sb.auth.updateUser({password:f.np.value});
+if(error){m.textContent="Changement impossible. Utilisez un autre mot de passe ou redemandez un lien.";return}
+f.reset();m.textContent="";recov=false;$("#dn").close();
+history.replaceState(null,"",location.pathname);
+alert("Votre mot de passe a été changé.");
+};
+$("#auth").onclick=()=>user?sb.auth.signOut():$("#da").showModal();
+$("#sell").onclick=()=>{
+if(!user){$("#da").showModal();return}
+if(!me){openProfile(true);return}
+if(acct!=="vendeur"){alert("Passez en compte vendeur pour publier une annonce.");return}
+$("#sf").reset();$("#sm").textContent="";updNet();
+$("#ds").showModal();
+};
+$("#sf").onsubmit=async e=>{
+e.preventDefault();
+const f=e.target,m=$("#sm"),files=[...f.photos.files].slice(0,3);
+if(files.some(x=>x.size>5e6)){m.textContent="Chaque photo doit faire moins de 5 Mo.";return}
+m.textContent="Publication en cours…";
+const urls=[];
+for(const[n,file]of files.entries()){
+const ext=(file.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"");
+const p=`${user.id}/${Date.now()}-${n}.${ext}`;
+const up=await sb.storage.from("photos").upload(p,file);
+if(up.error){m.textContent="L’envoi d’une photo a échoué. Réessayez.";return}
+urls.push(sb.storage.from("photos").getPublicUrl(p).data.publicUrl);
+}
+const{error}=await sb.from("listings").insert({title:f.ttl.value.trim(),price:+f.prix.value,category:f.cat.value,city:f.ville.value,etat:f.etat.value,marque:f.marque.value.trim()||null,description:f.desc.value.trim(),photos:urls});
+if(error){m.textContent="Publication impossible. Vérifiez que vous êtes en compte vendeur.";return}
+f.reset();m.textContent="";$("#ds").close();load();
+};
+labels();applyUI();loadParams();
+sb.auth.onAuthStateChange((ev,s)=>{
+if(ev==="PASSWORD_RECOVERY"){recov=true;setTimeout(()=>{$("#da").close();$("#dp").close();if(!$("#dn").open)$("#dn").showModal()},0)}
+user=s&&s.user?s.user:null;
+$("#auth").textContent=user?"Déconnexion":"Connexion";
+clearInterval(nt);
+setTimeout(async()=>{
+if(user){
+await loadFavs();await loadMe();
+acct=me&&me.mode?me.mode:"client";
+await loadWallet();
+first=true;unread=0;await checkUnread();nt=setInterval(checkUnread,10000);
+if(!me)openProfile(true);
+}else{
+favs=new Set();me=null;acct="client";wbal=0;unread=0;first=true;document.title=BASE;$("#msgs").textContent="Messages";$("#toast").hidden=true;
+if(mode!=="seller")mode="all";
+}
+applyUI();labels();load();
+},0);
+});
+</script>
+</body>
+</html>
+<!-- FIN DU FICHIER -->
