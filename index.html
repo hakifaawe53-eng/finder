@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Finder – Achetez et vendez d’occasion en Côte d’Ivoire</title>
+<meta name="description" content="Finder : la plateforme de vente d’articles d’occasion en Côte d’Ivoire. Téléphones, vêtements, électroménager et plus encore, à Abidjan, Yamoussoukro, Bouaké et partout dans le pays.">
+<style>
+:root{--ink:#171717;--mut:#757575;--t:#007782;--line:#e6e6e6;--f:#f5f5f5}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:#fff;color:var(--ink);line-height:1.5}
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:10px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;z-index:5}
+.logo{font-weight:700;font-size:1.6rem;color:var(--t);text-decoration:none}
+#burger{font-size:1.2rem;padding:6px 12px}
+#banner{order:5;flex-basis:100%;text-align:center;font-weight:600;color:var(--t);background:#E6F2F3;border-radius:4px;padding:8px 12px}
+.right{margin-left:auto;display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+button,select,input,textarea{font:inherit}
+button{cursor:pointer;border-radius:4px;border:1px solid var(--t);padding:9px 14px;background:#fff;color:var(--t)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.pri{background:var(--t);color:#fff;font-weight:500}
+.pri:hover{background:#006069}
+a{color:var(--t)}
+:focus-visible{outline:3px solid #7FC4CB;outline-offset:2px}
+#bn{margin-left:4px}
+#side{position:fixed;top:0;left:0;bottom:0;width:260px;background:#fff;border-right:1px solid var(--line);padding:16px 8px;overflow:auto;transform:translateX(-100%);transition:transform .2s;z-index:30}
+body.menu #side{transform:none}
+#ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:25}
+body.menu #ov{display:block}
+#side h4{margin:16px 12px 4px;font-size:.78rem;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
+#side button{display:block;width:100%;text-align:left;border:0;background:none;color:var(--ink);padding:10px 12px;border-radius:4px}
+#side button:hover{background:var(--f)}
+#side button.on{background:#E6F2F3;color:var(--t);font-weight:600}
+main{min-width:0;max-width:1100px;margin:0 auto;padding:0 16px 48px}
+@media(min-width:900px){
+.shell{display:flex;align-items:flex-start}
+#side{position:sticky;top:64px;height:calc(100vh - 64px);flex:0 0 240px;transform:none;z-index:1}
+#burger,#ov{display:none!important}
+#banner{order:0;flex:1;flex-basis:auto}
+main{flex:1}
+}
+#f{display:grid;gap:8px;grid-template-columns:1fr 1fr;padding-top:16px}
+#f input,#f button{grid-column:1/-1}
+input,select,textarea{width:100%;padding:11px 12px;border:1px solid var(--f);border-radius:4px;background:var(--f);color:var(--ink)}
+@media(min-width:760px){#f{grid-template-columns:2fr 1fr 1fr auto}#f input,#f button{grid-column:auto}}
+#sect{font-size:1.2rem;margin:16px 0 4px}
+.msg{color:var(--mut);min-height:1.5em;margin:4px 0 8px}
+#back{margin-bottom:12px}
+#shophd{border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin-top:16px}
+.shp{display:flex;gap:12px;align-items:center;margin-bottom:8px}
+.shp h2{margin:0;font-size:1.3rem}
+.logo2{width:64px;height:64px;border-radius:50%;object-fit:cover;background:var(--f);flex:0 0 64px}
+.ph2{display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--t);font-size:1.5rem;background:#E6F2F3}
+.vb{display:inline-block;background:#1D9BF0;color:#fff;border-radius:50%;width:16px;height:16px;line-height:16px;text-align:center;font-size:.7rem;margin-left:4px;vertical-align:middle}
+.idv{font-size:.8rem;color:#1D9BF0;margin-left:6px}
+.crit{margin:4px 0}
+#grid{display:grid;gap:16px 12px;grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+.card{background:#fff;cursor:pointer;position:relative}
+.card img,.ph{width:100%;aspect-ratio:3/4;object-fit:cover;background:var(--f);display:block;border-radius:4px}
+.card.sold img,.card.sold .ph{opacity:.45}
+.tag{position:absolute;top:8px;left:8px;background:var(--ink);color:#fff;padding:2px 8px;border-radius:4px;font-size:.8rem}
+.card div{padding:8px 0}
+.card b{color:var(--ink)}
+.card h3{font-size:.95rem;margin:2px 0;font-weight:400;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.card small,.meta{color:var(--mut)}
+.card small{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.pt{color:var(--t);font-size:.85rem;margin:0}
+.card .pt{display:block}
+.shield{vertical-align:-2px;margin:0 2px}
+.ibtn{border:0;background:none;padding:0 4px;font-size:1rem;color:var(--t)}
+.ihead{display:flex;gap:12px;align-items:center;margin-bottom:6px}
+.ithumb{width:56px;height:56px;border-radius:4px;object-fit:cover;background:var(--f);flex:0 0 56px}
+.idimg{width:100%;border-radius:4px;margin-top:8px}
+.ordmsg{margin:6px 0}
+.heart{position:absolute;top:8px;right:8px;width:36px;height:36px;padding:0;border-radius:50%;border:0;background:#fff;color:#bbb;font-size:1.2rem;line-height:36px;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.heart.on{color:var(--t)}
+body[data-acct="vendeur"] .heart{display:none}
+dialog{border:0;border-radius:8px;padding:20px;width:min(94vw,480px);max-height:90vh;color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+dialog h2{margin:0 0 12px}
+label{display:block;margin:10px 0 4px;font-weight:600}
+.chk{display:flex;gap:8px;align-items:flex-start;font-weight:400;margin:8px 0}
+.chk input{width:auto;margin-top:4px}
+.lnk{display:inline-block;margin:6px 0}
+.row{display:flex;gap:8px;margin-top:14px}
+.row button{flex:1}
+#dc img{width:100%;border-radius:4px;margin-bottom:8px}
+.pr{font-size:1.4rem;font-weight:700;margin:4px 0 0}
+.seller{margin:10px 0 0}
+.seebtn,.revbtn,.sbtn{width:100%;margin-top:8px}
+.repbtn{width:100%;margin-top:8px;color:#B3261E;border-color:#B3261E}
+.soldnote{background:var(--f);padding:10px;border-radius:4px;text-align:center;margin-top:8px;font-weight:600}
+.testnote{background:#FFF4E5;border:1px solid #F0D4A8;padding:10px;border-radius:4px;font-size:.9rem}
+.tx,.ord{margin:0;padding:8px 0;border-bottom:1px solid var(--line)}
+.nt{padding:10px 0;border-bottom:1px solid var(--line)}
+.nt b{display:block}
+.nt.new{background:#E6F2F3;margin:0 -8px;padding:10px 8px;border-radius:4px}
+.ost{background:var(--f);border-radius:4px;padding:10px;margin-bottom:8px}
+#dmod ul{margin:4px 0;padding-left:20px}
+details{border-bottom:1px solid var(--line);padding:8px 0}
+summary{cursor:pointer;font-weight:600}
+details p{margin:8px 0 4px}
+.whd{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.whd h2{margin:0}
+.bk{padding:4px 10px;font-size:1.3rem;border:0;background:none}
+.wrow{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.wlink{width:100%;background:none;border:0;border-bottom:1px solid var(--line);color:var(--ink);text-align:left;border-radius:0}
+.wmid{text-align:center;padding:18px 0 8px}
+.wbig{font-size:2rem;font-weight:700;margin:0}
+.wcap{margin:0 0 12px}
+#wf input{margin-bottom:8px}
+.rev{margin:6px 0}
+.stars{color:#E8A317}
+.del{width:100%;margin-top:8px;color:#B3261E;border-color:#B3261E}
+.safe{font-size:.9rem;color:var(--mut);margin-top:10px}
+.err{color:#B3261E;min-height:1.4em}
+#dt h3,#dbq h3,#dmod h3,#dhelp h3,#dabout h3,#dpriv h3,#dsup h3{margin:16px 0 4px;font-size:1rem}
+#dt ul,#dabout ul,#dpriv ul{margin:4px 0;padding-left:20px}
+#mb{display:flex;flex-direction:column;gap:6px;max-height:50vh;overflow:auto;margin:8px 0}
+.b{max-width:80%;padding:8px 12px;border-radius:12px;background:var(--f);align-self:flex-start;white-space:pre-wrap;word-break:break-word}
+.b.me{background:var(--t);color:#fff;align-self:flex-end}
+.st{display:block;text-align:right;font-size:.7rem;opacity:.85;margin-top:2px}
+#mf input{flex:3}
+.conv{display:block;width:100%;text-align:left;margin-bottom:8px;color:var(--ink);border-color:var(--line)}
+.dot{background:var(--t);color:#fff;border-radius:10px;padding:0 7px;font-size:.8rem}
+#toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--t);color:#fff;padding:12px 18px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.3);z-index:40;cursor:pointer;max-width:90vw;text-align:center}
+footer{text-align:center;color:var(--mut);padding:24px 16px;font-size:.9rem}
+</style>
+</head>
+<body>
+<header class="top">
+<button id="burger" aria-label="Ouvrir le menu">☰</button>
+<a class="logo" href="./">Finder</a>
+<!-- Texte du bandeau : à définir plus tard -->
+<div id="banner">Vendez ce que vous n’utilisez plus. Trouvez ce qu’il vous faut.</div>
+<div class="right">
+<button id="bell" hidden aria-label="Notifications">🔔<span id="bn" class="dot" hidden></span></button>
+<button id="sw" hidden></button>
+<button id="sell" class="pri">Vendre</button>
+<button id="auth">Connexion</button>
+</div>
+</header>
+<div id="ov"></div>
+<div class="shell">
+<aside id="side">
+<div id="acc" hidden>
+<h4>Mon compte</h4>
+<button id="bnt">Notifications</button>
+<button id="ord"></button>
+<button id="bq"></button>
+<button id="bcar" hidden>Ma carrière</button>
+<button id="mine">Mes annonces</button>
+<button id="fav">Favoris</button>
+<button id="msgs">Messages</button>
+<button id="wal"></button>
+<button id="pro">Mon profil</button>
+<button id="bid"></button>
+<button id="bmod" hidden>Modération</button>
+</div>
+<h4>Catégories</h4>
+<div id="cats"></div>
+<h4>Aide</h4>
+<button id="bhelp">Centre d’aide</button>
+<button id="bsup">Contacter le support</button>
+<button id="bvol">Déclarer un objet volé</button>
+<button id="babt">À propos de nous</button>
+<button id="bprv">Politique de confidentialité</button>
+<button class="tosl">Conditions et sécurité</button>
+</aside>
+<main>
+<form id="f">
+<input id="q" type="search" placeholder="Que cherchez-vous ? iPhone, robe, Samsung…" aria-label="Rechercher">
+<select id="fv" aria-label="Ville"></select>
+<select id="fe" aria-label="État"></select>
+<button class="pri">Chercher</button>
+</form>
+<section id="shophd" hidden></section>
+<h2 id="sect">Toutes les annonces</h2>
+<button id="back" hidden>Voir toutes les annonces</button>
+<p id="msg" class="msg" role="status"></p>
+<div id="grid"></div>
+</main>
+</div>
+<footer>Finder, la plateforme de vente d’articles d’occasion en Côte d’Ivoire. Payez avec le porte-monnaie Finder et confirmez la réception seulement quand vous avez l’article en main.<br><a href="#" class="hlpl">Centre d’aide</a> · <a href="#" class="abtl">À propos</a> · <a href="#" class="prvl">Confidentialité</a> · <a href="#" class="tosl">Conditions</a></footer>
+<div id="toast" hidden role="status"></div>
+<dialog id="da">
+<h2>Connexion</h2>
+<form id="af">
+<label for="em">Email</label><input id="em" name="em" type="email" required autocomplete="email">
+<label for="pw">Mot de passe (6 caractères minimum)</label><input id="pw" name="pw" type="password" minlength="6" required autocomplete="current-password">
+<label class="chk"><input type="checkbox" id="spw"> Afficher le mot de passe</label>
+<a href="#" id="fg" class="lnk">Mot de passe oublié ?</a>
+<p id="am" class="err" role="alert"></p>
+<div class="row"><button class="pri">Se connecter</button><button type="button" id="su">Créer un compte</button></div>
+<p class="meta">En créant un compte, vous acceptez les <a href="#" class="tosl">conditions d’utilisation</a> et la <a href="#" class="prvl">politique de confidentialité</a>.</p>
+<div class="row"><button type="button" data-x>Fermer</button></div>
+</form>
+</dialog>
+<dialog id="dn">
+<h2>Nouveau mot de passe</h2>
+<form id="nf">
+<label for="np">Nouveau mot de passe (6 caractères minimum)</label><input id="np" name="np" type="password" minlength="6" required autocomplete="new-password">
+<label for="nc">Confirmer le mot de passe</label><input id="nc" name="nc" type="password" minlength="6" required autocomplete="new-password">
+<label class="chk"><input type="checkbox" id="snp"> Afficher les mots de passe</label>
+<p id="nm" class="err" role="alert"></p>
+<div class="row"><button class="pri">Enregistrer</button><button type="button" data-x>Fermer</button></div>
+</form>
+</dialog>
+<dialog id="dkyc">
+<h2>Vérification d’identité</h2>
+<div id="kinfo"></div>
+<form id="kf" hidden>
+<label for="kn">Nom (comme sur la pièce)</label><input id="kn" name="kn" required minlength="2" maxlength="60" autocomplete="family-name">
+<label for="kp">Prénoms</label><input id="kp" name="kp" required minlength="2" maxlength="80" autocomplete="given-name">
+<label for="kd">Date de naissance</label><input id="kd" name="kd" type="date" required>
+<label for="ka">Adresse (ville et quartier)</label><input id="ka" name="ka" required minlength="3" maxlength="150" autocomplete="street-address">
+<label for="kt">Numéro de téléphone</label><input id="kt" name="kt" type="tel" inputmode="tel" required placeholder="07 00 00 00 00" autocomplete="tel">
+<label for="kty">Type de pièce</label>
+<select id="kty" name="kty"><option value="CNI">Carte nationale d’identité</option><option value="Passeport">Passeport</option><option value="Permis">Permis de conduire</option><option value="Attestation">Attestation d’identité</option></select>
+<label for="kno">Numéro de la pièce</label><input id="kno" name="kno" required minlength="5" maxlength="30" autocomplete="off">
+<label for="kf1">Photo de la pièce (recto)</label><input id="kf1" name="kf1" type="file" accept="image/*" required>
+<p class="meta">Photo nette, sans reflet, avec les quatre coins visibles.</p>
+<label for="kf2">Selfie en tenant la pièce</label><input id="kf2" name="kf2" type="file" accept="image/*" required>
+<p class="meta">Votre visage et la pièce doivent être bien visibles.</p>
+<label class="chk"><input type="checkbox" name="kc" required> J’accepte que Finder traite ces informations pour vérifier mon identité et prévenir la fraude, comme expliqué dans la politique de confidentialité. Je certifie qu’elles sont exactes et que cette pièce est la mienne.</label>
+<p id="km" class="err" role="alert"></p>
+<div class="row"><button class="pri">Envoyer ma demande</button><button type="button" data-x>Plus tard</button></div>
+</form>
+<div class="row" id="kclose" hidden><button type="button" data-x>Fermer</button></div>
+</dialog>
+<dialog id="dcar"><h2>Ma carrière sur Finder</h2><div id="carc"></div><div class="row"><button type="button" data-x>Fermer</button></div></dialog>
+<dialog id="dnt">
+<div class="whd"><button type="button" class="bk" data-x aria-label="Retour">←</button><h2>Notifications</h2></div>
+<div id="ntl"></div>
+</dialog>
+<dialog id="dlt">
+<h2>Vendre à long terme ?</h2>
+<p>Vous êtes en compte vendeur. Souhaitez-vous vendre sur Finder à long terme ?</p>
+<p class="meta">Avec une boutique Finder, vous avez le nom de votre boutique, votre photo, tous vos articles au même endroit, votre délai de livraison, votre ville, des avis visibles par tous, et la possibilité d’obtenir le badge bleu de certification. Le badge bleu et la limite la plus élevée pour votre porte-monnaie vendeur demandent une vérification d’identité.</p>
+<div class="row"><button class="pri" id="ltyes">Oui, créer ma boutique</button><button id="ltno">Non, pas pour l’instant</button></div>
+</dialog>
+<dialog id="dbq">
+<h2 id="bqt">Ma boutique Finder</h2>
+<form id="bqf">
+<img id="bqimg" class="logo2" alt="" hidden>
+<div id="bqph" class="logo2 ph2">?</div>
+<label for="bqn">Nom de la boutique</label><input id="bqn" name="bnom" required minlength="2" maxlength="40" placeholder="Ex : Awa Mode">
+<label for="bqp">Photo de profil de la boutique</label><input id="bqp" name="bphoto" type="file" accept="image/*">
+<label for="bqv">Ville</label><select id="bqv" name="bville"></select>
+<label for="bqd">Délai de livraison</label><select id="bqd" name="bdelai"></select>
+<p id="bqm" class="err" role="alert"></p>
+<div class="row"><button class="pri" id="bqs">Créer ma boutique</button><button type="button" data-x>Fermer</button></div>
+</form>
+<div id="bqx" hidden>
+<h3>Mes articles</h3>
+<div class="row"><button type="button" id="bqa">Ajouter un article</button><button type="button" id="bqo">Voir ma boutique</button></div>
+<h3>Certification (badge bleu)</h3>
+<div id="bqc"></div>
+</div>
+</dialog>
+<dialog id="dpi">
+<h2>Protection acheteur</h2>
+<div id="dpic"></div>
+<p class="meta">La protection acheteur garde votre argent jusqu’à la réception de l’article. Si l’article n’arrive pas ou n’est pas conforme, signalez-le avant de confirmer : Finder examine la situation et peut vous rembourser.</p>
+<div class="row"><button type="button" data-x>Fermer</button></div>
+</dialog>
+<dialog id="dvol">
+<h2>Déclarer un objet volé</h2>
+<p class="meta">Si on vous a volé un objet (téléphone, ordinateur, moto…), donnez son IMEI ou son numéro de série. Si quelqu’un essaie de le vendre sur Finder, l’annonce sera mise en vérification. Pensez aussi à porter plainte.</p>
+<form id="vf">
+<label for="vn">IMEI, numéro de série ou de châssis</label><input id="vn" name="vn" required maxlength="40" autocomplete="off">
+<label for="vd">Description (marque, modèle, date et lieu du vol)</label><textarea id="vd" name="vd" rows="3" maxlength="300"></textarea>
+<label class="chk"><input type="checkbox" name="va" required> Je certifie que cette déclaration est exacte. Une fausse déclaration peut entraîner la fermeture de mon compte.</label>
+<p id="vm" class="err" role="alert"></p>
+<div class="row"><button class="pri">Envoyer la déclaration</button><button type="button" data-x>Fermer</button></div>
+</form>
+</dialog>
+<dialog id="dmod"><h2>Modération</h2><div id="dmc"></div><div class="row"><button type="button" data-x>Fermer</button></div></dialog>
+<dialog id="dhelp">
+<h2>Centre d’aide</h2>
+<p class="meta">Tout ce qu’il faut savoir pour utiliser Finder. Vous ne trouvez pas la réponse ? Contactez le support.</p>
+<h3>Pour commencer</h3>
+<details><summary>Comment créer un compte ?</summary><p>Appuyez sur « Connexion », puis sur « Créer un compte » avec votre email et un mot de passe de 6 caractères minimum. Choisissez ensuite votre nom affiché et si vous voulez d’abord acheter ou vendre.</p></details>
+<details><summary>Quelle différence entre compte client et compte vendeur ?</summary><p>Le compte client sert à acheter, le compte vendeur sert à vendre. Chacun a son propre porte-monnaie. Vous passez de l’un à l’autre avec le bouton « Compte client ⇄ Vendeur » en haut de l’écran. Un client ne peut pas vendre et un vendeur ne peut pas acheter.</p></details>
+<details><summary>J’ai oublié mon mot de passe</summary><p>Dans la fenêtre de connexion, entrez votre email puis appuyez sur « Mot de passe oublié ? ». Vous recevrez un lien pour en choisir un nouveau. Pensez à regarder vos spams.</p></details>
+<h3>Acheter</h3>
+<details><summary>Comment acheter un article ?</summary><p>En compte client, ouvrez l’annonce et appuyez sur « Acheter ». Il faut avoir assez d’argent dans votre porte-monnaie. Le prix et les frais de protection acheteur sont retirés et gardés par Finder jusqu’à ce que vous confirmiez la réception.</p></details>
+<details><summary>Qu’est-ce que la protection acheteur ?</summary><p>Ce sont des frais payés par l’acheteur, en plus du prix : <span class="pp">5</span> % du prix plus <span class="pfx">150 FCFA</span>. Ils sont affichés avant le paiement. En échange, votre argent reste bloqué jusqu’à la réception de l’article et vous pouvez signaler un problème.</p></details>
+<details><summary>Quand confirmer la réception ?</summary><p>Seulement quand vous avez l’article en main et que vous l’avez vérifié. Allez dans « Mes achats » et appuyez sur « J’ai reçu l’article » : le vendeur est alors payé.</p></details>
+<details><summary>L’article n’arrive pas ou n’est pas conforme</summary><p>Dans « Mes achats », appuyez sur « Signaler un problème » avant de confirmer la réception. Votre argent reste bloqué, Finder examine la situation, puis vous rembourse ou verse le vendeur.</p></details>
+<h3>Vendre</h3>
+<details><summary>Comment publier une annonce ?</summary><p>Passez en compte vendeur, appuyez sur « Vendre », puis remplissez le titre, le prix, la catégorie, l’état, la ville, la description et jusqu’à 3 photos. Cochez la certification que l’article vous appartient.</p></details>
+<details><summary>Pourquoi me demande-t-on un IMEI ou un numéro de série ?</summary><p>Pour les téléphones, l’informatique et les véhicules, ce numéro permet de lutter contre la vente d’objets volés. Il n’est jamais affiché publiquement. Pour un téléphone, tapez *#06# pour afficher l’IMEI (15 chiffres).</p></details>
+<details><summary>Mon annonce est « en vérification »</summary><p>Finder vérifie certaines annonces avant de les publier. Elle sera visible dès qu’elle sera approuvée. Vous recevez une notification à chaque étape.</p></details>
+<details><summary>Combien coûte la vente d’un article ?</summary><p>Rien : le vendeur ne paie aucune commission et reçoit la totalité du prix. Les frais de protection sont payés par l’acheteur.</p></details>
+<details><summary>Quand suis-je payé ?</summary><p>Quand l’acheteur confirme la réception. L’argent arrive dans votre porte-monnaie vendeur et vous recevez une notification « Paiement reçu ».</p></details>
+<details><summary>Comment supprimer une annonce ?</summary><p>Ouvrez « Mes annonces », appuyez sur l’annonce, puis sur « Supprimer l’annonce ».</p></details>
+<h3>Porte-monnaie</h3>
+<details><summary>Comment recharger ou retirer mon argent ?</summary><p>Ouvrez « Porte-monnaie » dans le menu. Le client recharge son porte-monnaie, le vendeur transfère son argent vers son Mobile Money. Pour l’instant, le porte-monnaie fonctionne en mode test : l’argent est fictif.</p></details>
+<details><summary>Quelle est la limite de mon porte-monnaie vendeur ?</summary><p>Un vendeur sans boutique peut avoir au maximum <span class="pl1">250 000 FCFA</span> (solde plus ventes en attente). Une boutique dont l’identité est vérifiée peut aller jusqu’à <span class="pl2">10 000 000 FCFA</span>. Transférer votre argent libère de la place.</p></details>
+<h3>Boutique et badge bleu</h3>
+<details><summary>Comment créer ma boutique ?</summary><p>En compte vendeur, ouvrez « Créer ma boutique », puis choisissez un nom, une photo, une ville et un délai de livraison. Tous vos articles sont réunis dans votre boutique, et les avis sont visibles par tous.</p></details>
+<details><summary>Comment obtenir le badge bleu ?</summary><p>La boutique doit remplir tous les critères : boutique complète, ancienneté, ventes terminées, avis avec une bonne note moyenne, peu de signalements, et identité vérifiée. Ouvrez « Ma boutique » pour suivre votre progression, puis appuyez sur « Certifier ma boutique ».</p></details>
+<details><summary>Pourquoi mon badge bleu a-t-il disparu ?</summary><p>Le badge est retiré automatiquement dès qu’un critère n’est plus rempli (par exemple une note moyenne trop basse ou de nouveaux signalements). Vous recevez une notification qui indique les critères concernés. Vous pouvez le récupérer dès que tout est de nouveau rempli.</p></details>
+<details><summary>Comment faire vérifier mon identité ?</summary><p>Ouvrez « Vérifier mon identité » dans le menu (compte vendeur). Remplissez le formulaire, ajoutez la photo de votre pièce et un selfie avec la pièce. Finder vous prévient du résultat par notification. Il faut avoir 18 ans ou plus.</p></details>
+<h3>Sécurité</h3>
+<details><summary>Comment éviter les arnaques ?</summary><p>Payez uniquement avec le porte-monnaie Finder, ne donnez jamais de code reçu par SMS ni de mot de passe, méfiez-vous des prix trop bas, et confirmez la réception seulement quand vous avez l’article. Payer en dehors de Finder est interdit.</p></details>
+<details><summary>On m’a volé un objet, que faire ?</summary><p>Utilisez « Déclarer un objet volé » dans le menu avec son IMEI ou son numéro de série. Si quelqu’un essaie de le vendre sur Finder, l’annonce sera vérifiée. Portez aussi plainte auprès des autorités.</p></details>
+<details><summary>Comment signaler une annonce ?</summary><p>Ouvrez l’annonce et appuyez sur « Signaler cette annonce », puis choisissez le motif.</p></details>
+<h3>Notifications</h3>
+<details><summary>Comment suis-je prévenu ?</summary><p>La cloche en haut de l’écran affiche vos notifications non lues : vente, achat, paiement, remboursement, litige, annonce, identité, porte-monnaie, réponse du support. Autorisez les notifications du navigateur pour être prévenu même quand l’onglet est en arrière-plan.</p></details>
+<div class="row"><button type="button" class="pri" data-sup>Contacter le support</button><button type="button" data-x>Fermer</button></div>
+</dialog>
+<dialog id="dsup">
+<h2>Contacter le support</h2>
+<p class="meta">Posez votre question ou décrivez votre problème. Nous vous répondons ici, et vous êtes prévenu par notification.</p>
+<form id="sf2">
+<label for="sj">Sujet</label>
+<select id="sj" name="sujet"><option>Question sur une commande</option><option>Porte-monnaie ou paiement</option><option>Problème technique</option><option>Boutique ou badge bleu</option><option>Mes données personnelles (accès, suppression)</option><option>Autre</option></select>
+<label for="sg">Message</label><textarea id="sg" name="msg" rows="5" required minlength="5" maxlength="1000" placeholder="Décrivez votre demande avec le plus de détails possible."></textarea>
+<p id="sm2" class="err" role="alert"></p>
+<div class="row"><button class="pri">Envoyer</button><button type="button" data-x>Fermer</button></div>
+</form>
+<h3>Mes demandes</h3>
+<div id="stl"></div>
+</dialog>
+<dialog id="dabout">
+<h2>À propos de nous</h2>
+<p><b>Finder</b> est une plateforme de vente d’articles d’occasion en Côte d’Ivoire. Elle permet à chacun de donner une seconde vie à ce qu’il n’utilise plus et de trouver à bon prix ce dont il a besoin : téléphones, vêtements, électroménager, meubles et bien plus.</p>
+<h3>Notre mission</h3>
+<p>Rendre l’achat et la vente d’occasion simples, sûrs et transparents partout en Côte d’Ivoire.</p>
+<h3>Ce qui nous distingue</h3>
+<ul>
+<li><b>Un paiement sécurisé</b> : l’argent d’un achat reste bloqué dans le porte-monnaie Finder jusqu’à ce que l’acheteur confirme avoir reçu l’article.</li>
+<li><b>La protection acheteur</b> : en cas de problème, l’acheteur signale, et Finder examine la situation avant de décider.</li>
+<li><b>Aucune commission pour les vendeurs</b> : ils reçoivent la totalité du prix de leur article.</li>
+<li><b>La lutte contre les objets volés</b> : numéro de série obligatoire pour les articles sensibles, contrôles automatiques et vérification par notre équipe.</li>
+<li><b>Des boutiques de confiance</b> : les vendeurs réguliers peuvent ouvrir une boutique, faire vérifier leur identité et obtenir le badge bleu de certification.</li>
+</ul>
+<h3>Nos engagements</h3>
+<ul>
+<li>Des frais clairs, affichés avant chaque paiement.</li>
+<li>La protection de vos données personnelles.</li>
+<li>Une réponse du support à chaque demande.</li>
+</ul>
+<h3>Nous contacter</h3>
+<p>Une question, une suggestion ou un problème ? Écrivez-nous depuis le support.</p>
+<div class="row"><button type="button" class="pri" data-sup>Contacter le support</button><button type="button" data-x>Fermer</button></div>
+</dialog>
+<dialog id="dpriv">
+<h2>Politique de confidentialité</h2>
+<p class="meta">Dernière mise à jour : novembre 2026</p>
+<p>Cette politique explique quelles informations Finder collecte, pourquoi, qui peut les voir et quels sont vos droits. Le responsable du traitement de vos données est Finder.</p>
+<h3>1. Les informations que nous collectons</h3>
+<ul>
+<li><b>Votre compte</b> : votre adresse email et votre mot de passe (conservé sous forme sécurisée, nous ne pouvons pas le lire).</li>
+<li><b>Votre profil</b> : nom affiché, ville, présentation, type de compte (client ou vendeur) et date à laquelle vous êtes devenu vendeur.</li>
+<li><b>Vos annonces</b> : titre, description, prix, photos, catégorie, marque, état, ville, et le numéro de série ou IMEI pour certains articles.</li>
+<li><b>Vos échanges et vos activités</b> : messages, avis, favoris, signalements, commandes, opérations du porte-monnaie, notifications et demandes au support.</li>
+<li><b>Votre boutique</b> : nom, photo, ville et délai de livraison.</li>
+<li><b>Votre identité</b>, uniquement si vous demandez une boutique ou le badge bleu : nom, prénoms, date de naissance, adresse, téléphone, type et numéro de pièce, photo de la pièce et selfie avec la pièce.</li>
+</ul>
+<h3>2. Pourquoi nous les utilisons</h3>
+<ul>
+<li>Faire fonctionner Finder : créer votre compte, publier vos annonces, traiter les achats et les paiements, afficher votre boutique.</li>
+<li>Assurer la sécurité : prévenir la fraude, la vente d’objets volés et les usages interdits.</li>
+<li>Vérifier votre identité quand vous ouvrez une boutique ou demandez le badge bleu, et vérifier que vous avez 18 ans ou plus.</li>
+<li>Vous informer de ce qui se passe sur votre compte (notifications) et répondre à vos demandes de support.</li>
+<li>Respecter nos obligations légales et répondre aux demandes des autorités compétentes.</li>
+</ul>
+<h3>3. Ce que les autres utilisateurs peuvent voir</h3>
+<p>Sont visibles par les visiteurs : votre nom affiché, votre ville, votre présentation, vos annonces, votre boutique, votre badge, les avis vous concernant et « Vendeur sur Finder depuis … ». Ne sont <b>jamais</b> affichés publiquement : votre email, vos informations d’identité, votre numéro de série ou IMEI, votre numéro de pièce et vos messages privés.</p>
+<h3>4. Avec qui nous les partageons</h3>
+<ul>
+<li>Nous ne vendons pas vos données et ne les utilisons pas pour de la publicité de tiers.</li>
+<li>Nous utilisons des prestataires techniques pour héberger le site et stocker les données (hébergement du site, base de données, authentification et stockage des fichiers). Ils ne les utilisent que pour nous fournir ce service, et vos données peuvent être hébergées hors de Côte d’Ivoire.</li>
+<li>Nous pouvons transmettre des informations aux autorités compétentes lorsque la loi l’exige ou pour une enquête, par exemple en cas de vente d’objet volé.</li>
+</ul>
+<h3>5. Combien de temps nous les conservons</h3>
+<p>Nous conservons vos données tant que votre compte est actif, puis le temps nécessaire pour respecter nos obligations légales et traiter d’éventuels litiges. Les pièces d’identité et les selfies ne sont conservés que le temps nécessaire à la vérification et à la prévention de la fraude. Le numéro de votre pièce n’est pas conservé en clair : seule une empreinte non lisible est gardée pour repérer l’usage d’une même pièce sur plusieurs comptes.</p>
+<h3>6. Comment nous les protégeons</h3>
+<ul>
+<li>Les pièces d’identité sont stockées dans un espace privé, accessible uniquement aux personnes habilitées de Finder, avec des liens temporaires.</li>
+<li>Chaque utilisateur ne peut consulter que ses propres informations privées.</li>
+<li>Les échanges avec le site sont chiffrés.</li>
+</ul>
+<h3>7. Vos droits</h3>
+<p>Vous pouvez demander l’accès à vos données, leur correction, leur suppression ou vous opposer à certains usages, dans la limite de nos obligations légales. Faites votre demande depuis « Contacter le support » (sujet « Mes données personnelles »). Vous pouvez aussi saisir l’ARTCI, l’autorité de protection des données personnelles en Côte d’Ivoire.</p>
+<h3>8. Stockage sur votre appareil</h3>
+<p>Finder enregistre sur votre appareil les informations nécessaires pour garder votre connexion ouverte. Nous n’utilisons pas de cookies publicitaires.</p>
+<h3>9. Personnes mineures</h3>
+<p>Finder s’adresse aux personnes de 18 ans et plus. La vérification d’identité est réservée aux personnes majeures.</p>
+<h3>10. Modifications</h3>
+<p>Nous pouvons modifier cette politique. La date de mise à jour est indiquée en haut de cette page. En cas de changement important, nous vous en informerons.</p>
+<div class="row"><button type="button" data-sup>Exercer mes droits / contacter le support</button><button type="button" data-x>Fermer</button></div>
+</dialog>
+<dialog id="dt">
+<h2>Conditions d’utilisation et sécurité</h2>
+<p>Finder est une plateforme de vente d’articles d’occasion en Côte d’Ivoire. Les articles sont mis en vente par les vendeurs, qui en sont responsables : Finder ne possède pas les articles proposés, ne garantit pas leur qualité et n’est pas responsable du comportement des utilisateurs. Finder fournit la plateforme, le porte-monnaie, la protection acheteur et les outils de sécurité décrits ci-dessous.</p>
+<h3>Comptes client et vendeur</h3>
+<ul>
+<li>Un compte client sert à acheter. Un compte vendeur sert à vendre. Vous pouvez passer de l’un à l’autre quand vous voulez.</li>
+<li>En compte client, vous ne pouvez pas vendre. En compte vendeur, vous ne pouvez pas acheter.</li>
+<li>Chaque compte a son porte-monnaie. L’argent d’un achat est bloqué jusqu’à ce que l’acheteur confirme la réception.</li>
+<li>Finder enregistre la date à laquelle vous devenez vendeur et affiche « Vendeur sur Finder depuis … » sur vos annonces et votre boutique.</li>
+<li>Finder vous informe par notification de chaque mouvement qui vous concerne : vente, achat, paiement, remboursement, litige, annonce, identité et porte-monnaie.</li>
+</ul>
+<h3>Limite du porte-monnaie vendeur et vérification d’identité</h3>
+<ul>
+<li>Vous pouvez acheter et vendre sans vérification d’identité. Le porte-monnaie d’un vendeur sans boutique peut contenir au maximum <span class="pl1">250 000 FCFA</span>, ventes en attente de confirmation comprises. Une vente qui ferait dépasser cette limite est refusée. Le vendeur peut libérer de la place en transférant son argent vers son compte Mobile Money.</li>
+<li>Pour augmenter cette limite, le vendeur doit créer une boutique Finder et faire vérifier son identité. La limite du porte-monnaie d’une boutique dont l’identité est vérifiée est de <span class="pl2">10 000 000 FCFA</span>. Une boutique dont l’identité n’est pas vérifiée garde la limite de <span class="pl1">250 000 FCFA</span>.</li>
+<li>La vérification d’identité fait partie des critères du badge bleu. Elle demande : nom, prénoms, date de naissance (18 ans minimum), adresse, téléphone, type et numéro de pièce, photo de la pièce et selfie avec la pièce.</li>
+<li>Ces informations servent uniquement à vérifier votre identité et à prévenir la fraude et la vente d’objets volés. Elles ne sont jamais affichées publiquement et seules les personnes habilitées de Finder y ont accès. Le numéro de pièce n’est pas conservé en clair. Voir la <a href="#" class="prvl">politique de confidentialité</a>.</li>
+<li>Finder peut transmettre ces informations aux autorités compétentes en cas d’enquête. Vous pouvez demander l’accès à vos données ou leur suppression depuis le support, dans la limite des obligations légales de conservation.</li>
+<li>Fournir de fausses informations, ou la pièce d’une autre personne, peut entraîner la fermeture du compte.</li>
+</ul>
+<h3>Boutiques et badge bleu</h3>
+<ul>
+<li>Un vendeur peut créer une boutique Finder, avec un nom, une photo, une ville et un délai de livraison. Les avis laissés sur la boutique sont visibles par tous.</li>
+<li>Le badge bleu est attribué quand la boutique remplit tous les critères de Finder, dont la vérification d’identité du vendeur. Il est retiré automatiquement dès qu’un critère n’est plus rempli. Finder peut aussi le retirer si les règles ne sont pas respectées.</li>
+</ul>
+<h3>Paiements et protection acheteur</h3>
+<ul>
+<li>Toute vente conclue grâce à Finder doit être payée sur Finder, avec le porte-monnaie.</li>
+<li>L’acheteur paie, en plus du prix de l’article, des frais de protection acheteur de <span class="pp">5</span> % du prix plus <span class="pfx">150 FCFA</span>. Ces frais sont affichés avant le paiement. Le vendeur ne paie aucune commission : il reçoit la totalité du prix.</li>
+<li>La protection acheteur garde l’argent jusqu’à la confirmation de réception. En cas de problème, l’acheteur peut le signaler avant de confirmer : l’argent reste alors bloqué, Finder examine la situation et décide de rembourser l’acheteur ou de verser le vendeur.</li>
+<li>Payer, ou demander de payer, en dehors de Finder pour éviter les frais est interdit et peut entraîner la fermeture du compte.</li>
+</ul>
+<h3>Lutte contre les articles volés</h3>
+<ul>
+<li>Pour les téléphones, l’informatique et les véhicules, le vendeur doit indiquer l’IMEI, le numéro de série ou le numéro de châssis. Il n’est jamais affiché publiquement.</li>
+<li>Le vendeur certifie que l’article lui appartient et qu’il peut le vendre légalement.</li>
+<li>Finder peut vérifier une annonce avant sa publication, la refuser ou la retirer, et fermer le compte du vendeur. Une annonce refusée est conservée par Finder.</li>
+<li>La vente d’un article volé est un délit. Finder peut transmettre aux autorités les informations nécessaires à une enquête.</li>
+<li>Toute personne peut déclarer un objet volé grâce à son numéro de série. Une fausse déclaration peut entraîner la fermeture du compte.</li>
+</ul>
+<h3>Règles pour tous</h3>
+<ul>
+<li>Une personne, un compte, avec des informations vraies.</li>
+<li>Soyez honnête : photos réelles de l’article, description et prix exacts.</li>
+<li>Restez respectueux dans les messages et les avis. Les avis doivent refléter une vraie expérience.</li>
+</ul>
+<h3>Articles interdits</h3>
+<ul>
+<li>Armes, munitions et explosifs.</li>
+<li>Drogues, médicaments et produits dangereux.</li>
+<li>Articles volés, contrefaits ou de provenance douteuse.</li>
+<li>Documents d’identité, comptes, cartes bancaires ou données personnelles.</li>
+<li>Tout contenu illégal, trompeur ou choquant.</li>
+</ul>
+<h3>Conseils de sécurité</h3>
+<ul>
+<li>Ne donnez jamais de code reçu par SMS ni de mot de passe.</li>
+<li>Confirmez la réception seulement quand vous avez l’article en main et que vous l’avez vérifié.</li>
+<li>Méfiez-vous des prix trop bas et des demandes de paiement en dehors de Finder.</li>
+<li>Gardez vos échanges sur Finder pour avoir une trace.</li>
+</ul>
+<h3>Vos informations</h3>
+<p>Votre nom affiché, votre ville, votre présentation, vos annonces, votre boutique et vos avis sont visibles par les visiteurs du site. Votre email n’est pas affiché. Pour en savoir plus, consultez la <a href="#" class="prvl">politique de confidentialité</a>.</p>
+<h3>Signalement et sanctions</h3>
+<p>Utilisez le bouton « Signaler cette annonce » si vous voyez une arnaque ou un article interdit. Finder peut retirer une annonce ou fermer un compte qui ne respecte pas ces règles.</p>
+<div class="row"><button type="button" data-x>Fermer</button></div>
+</dialog>
+<dialog id="dg">
+<h2>Signaler cette annonce</h2>
+<form id="rgf">
+<label for="gm">Motif</label>
+<select id="gm" name="motif"><option>Arnaque ou faux article</option><option>Article interdit</option><option>Prix trompeur</option><option>Photos non conformes</option><option>Autre</option></select>
+<label for="gd">Détails (facultatif)</label><textarea id="gd" name="det" rows="3" maxlength="300" placeholder="Que s’est-il passé ?"></textarea>
+<p id="rgm" class="err" role="alert"></p>
+<div class="row"><button class="pri">Envoyer le signalement</button><button type="button" data-x>Fermer</button></div>
+</form>
+</dialog>
+<dialog id="dp">
+<h2>Mon profil</h2>
+<form id="pf">
+<div id="pmw"><label for="pmo">Je veux d’abord</label><select id="pmo" name="pmode"><option value="client">Acheter (compte client)</option><option value="vendeur">Vendre (compte vendeur)</option></select></div>
+<label for="pn">Nom affiché</label><input id="pn" name="nom" required minlength="2" maxlength="40" placeholder="Ex : Awa K.">
+<label for="pv">Ville</label><select id="pv" name="pville"></select>
+<label for="pb">Présentation (facultatif)</label><textarea id="pb" name="bio" rows="3" maxlength="200" placeholder="Ex : Je vends des vêtements en très bon état."></textarea>
+<p id="pm" class="err" role="alert"></p>
+<div class="row"><button class="pri">Enregistrer</button><button type="button" data-x>Fermer</button></div>
+</form>
+</dialog>
+<dialog id="ds">
+<h2>Vendre un article</h2>
+<form id="sf">
+<label for="ttl">Titre</label><input id="ttl" name="ttl" required minlength="3" maxlength="100" placeholder="Ex : Samsung A14, 64 Go">
+<label for="prix">Prix en FCFA</label><input id="prix" name="prix" type="number" min="0" inputmode="numeric" required>
+<p id="cm" class="meta"></p>
+<p id="plh" class="meta"></p>
+<label for="sc">Catégorie</label><select id="sc" name="cat"></select>
+<div id="nsw" hidden><label for="nsn" id="nsl">Numéro de série</label><input id="nsn" name="numero" maxlength="40" autocomplete="off"><p class="meta" id="nsh"></p></div>
+<label for="se">État de l’article</label><select id="se" name="etat"></select>
+<label for="mq">Marque (facultatif)</label><input id="mq" name="marque" maxlength="40" placeholder="Ex : Samsung, Nike, Zara">
+<label for="sv">Ville</label><select id="sv" name="ville"></select>
+<label for="desc">Description</label><textarea id="desc" name="desc" rows="3" placeholder="Détails, taille, raison de la vente…"></textarea>
+<label for="ph">Photos (3 maximum)</label><input id="ph" name="photos" type="file" accept="image/*" multiple>
+<label class="chk"><input type="checkbox" id="att" name="att" required> Je certifie que cet article m’appartient et que je peux légalement le vendre.</label>
+<p id="sm" class="err" role="alert"></p>
+<div class="row"><button class="pri">Publier l’annonce</button><button type="button" data-x>Fermer</button></div>
+</form>
+</dialog>
+<dialog id="dd"><div id="dc"></div><div class="row"><button type="button" data-x>Fermer</button></div></dialog>
+<dialog id="dw">
+<div class="whd"><button type="button" class="bk" data-x aria-label="Retour">←</button><h2 id="wt">Mon porte-monnaie</h2></div>
+<p class="testnote">Mode test : l’argent est fictif. Aucun vrai paiement Orange Money, MTN ou Wave n’est effectué.</p>
+<div class="wrow"><span>Montant en attente</span><b id="wp">0 FCFA</b></div>
+<div class="wmid"><p class="wbig" id="wb">0 FCFA</p><p class="meta wcap">Montant disponible</p></div>
+<form id="wf"><input id="wi" type="number" min="1" inputmode="numeric" placeholder="Montant en FCFA"><button id="wbtn" class="pri sbtn"></button></form>
+<p id="wm" class="err" role="alert"></p>
+<div class="wrow"><span>Solde initial<br><small class="meta" id="wd">—</small></span><b id="wini">0 FCFA</b></div>
+<div id="wpl" hidden><div class="wrow"><span>Limite du porte-monnaie<br><small class="meta" id="wpd"></small></span><b id="wpv"></b></div><button type="button" class="sbtn" id="wpb" hidden>Augmenter ma limite : créer une boutique Finder</button></div>
+<button type="button" class="wrow wlink" id="wh"><span>Accéder à l’historique</span><span>›</span></button>
+</dialog>
+<dialog id="dwh">
+<div class="whd"><button type="button" class="bk" data-x aria-label="Retour">←</button><h2>Historique</h2></div>
+<div id="wl"></div>
+</dialog>
+<dialog id="do"><h2 id="ot"></h2><div id="ost" class="ost" hidden></div><div id="ol"></div><div class="row"><button type="button" data-x>Fermer</button></div></dialog>
+<dialog id="dr">
+<h2 id="rt">Laisser un avis</h2>
+<form id="rf">
+<label for="rn">Note</label>
+<select id="rn" name="note"><option value="5">5 ★ Excellent</option><option value="4">4 ★ Très bien</option><option value="3">3 ★ Bien</option><option value="2">2 ★ Moyen</option><option value="1">1 ★ Mauvais</option></select>
+<label for="rc">Commentaire (facultatif)</label><textarea id="rc" name="com" rows="3" maxlength="300" placeholder="Article conforme ? Vendeur sérieux ?"></textarea>
+<p id="rm" class="err" role="alert"></p>
+<div class="row"><button class="pri">Envoyer l’avis</button><button type="button" data-x>Fermer</button></div>
+</form>
+</dialog>
+<dialog id="di"><h2>Messages</h2><div id="il"></div><div class="row"><button type="button" data-x>Fermer</button></div></dialog>
+<dialog id="dm"><h2 id="mt"></h2><p class="testnote">Pour votre sécurité, ne payez jamais en dehors de Finder et ne partagez pas de numéro de téléphone.</p><div id="mb"></div><form id="mf" class="row"><input id="mi" maxlength="500" required placeholder="Votre message…" autocomplete="off"><button class="pri">Envoyer</button></form><div class="row"><button type="button" data-x>Fermer</button></div></dialog>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="app.js?v=1"></script>
+</body>
+</html>
+<!-- FIN DU FICHIER -->
