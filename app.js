@@ -1012,4 +1012,4 @@ if(user&&me)maybeAskLongTerm();
 // Modernisation de l'interface
 (function(){var l=document.createElement("link");l.rel="stylesheet";l.href="style.css?v=1";document.head.appendChild(l);var s=document.createElement("script");s.src="ui.js?v=1";document.body.appendChild(s)})();
 (function(){var s=document.createElement("script");s.src="cat.js?v=1";document.body.appendChild(s)})();
-
+(function(){var s=document.createElement("script");s.src="media.js?v=1";document.body.appendChild(s)})();
