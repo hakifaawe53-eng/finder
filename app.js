@@ -1018,3 +1018,4 @@ if(user&&me)maybeAskLongTerm();
 (function(){var s=document.createElement("script");s.src="bonus.js?v=1";document.body.appendChild(s)})();
 (function(){var s=document.createElement("script");s.src="fix.js?v=1";document.body.appendChild(s)})();
 (function(){var s=document.createElement("script");s.src="shop.js?v=1";document.body.appendChild(s)})();
+(function(){var s=document.createElement("script");s.src="ident.js?v=1";document.body.appendChild(s)})();
