@@ -1026,3 +1026,5 @@ if(user&&me)maybeAskLongTerm();
 (function(){var s=document.createElement("script");s.src="codeseul.js?v=1";document.body.appendChild(s)})();
 (function(){var s=document.createElement("script");s.src="delai.js?v=1";document.body.appendChild(s)})();
 (function(){var s=document.createElement("script");s.src="litiges.js?v=1";document.body.appendChild(s)})();
+(function(){var s=document.createElement("script");s.src="stats.js?v=1";document.body.appendChild(s)})();
+(function(){var s=document.createElement("script");s.src="dash.js?v=1";document.body.appendChild(s)})();
