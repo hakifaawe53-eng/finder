@@ -1031,3 +1031,5 @@ if(user&&me)maybeAskLongTerm();
 (function(){var s=document.createElement("script");s.src="garde.js?v=1";document.body.appendChild(s)})();
 (function(){var s=document.createElement("script");s.src="voir.js?v=1";document.body.appendChild(s)})();
 (function(){var s=document.createElement("script");s.src="chatmedia.js?v=1";document.body.appendChild(s)})();
+(function(){var s=document.createElement("script");s.src="rdv.js?v=1";document.body.appendChild(s)})();
+(function(){var s=document.createElement("script");s.src="controle.js?v=1";document.body.appendChild(s)})();
