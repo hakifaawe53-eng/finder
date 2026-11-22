@@ -1037,3 +1037,4 @@ if(user&&me)maybeAskLongTerm();
 (function(){var s=document.createElement("script");s.src="reserve.js?v=1";document.body.appendChild(s)})();
 (function(){var s=document.createElement("script");s.src="paie.js?v=1";document.body.appendChild(s)})();
 (function(){var s=document.createElement("script");s.src="dash2.js?v=1";document.body.appendChild(s)})();
+(function(){var s=document.createElement("script");s.src="notifdetail.js?v=1";document.body.appendChild(s)})();
