@@ -1042,3 +1042,4 @@ if(user&&me)maybeAskLongTerm();
 (function(){var s=document.createElement("script");s.src="reset.js?v=1";document.body.appendChild(s)})();
 (function(){var s=document.createElement("script");s.src="taille.js?v=1";document.body.appendChild(s)})();
 (function(){var s=document.createElement("script");s.src="chatui.js?v=1";document.body.appendChild(s)})();
+(function(){var s=document.createElement("script");s.src="vendu.js?v=1";document.body.appendChild(s)})();
