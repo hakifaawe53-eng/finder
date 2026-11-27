@@ -1050,3 +1050,4 @@ if(user&&me)maybeAskLongTerm();
 (function(){var s=document.createElement("script");s.src="texte.js?v=1";document.body.appendChild(s)})();
 (function(){var s=document.createElement("script");s.src="inscription.js?v=1";document.body.appendChild(s)})();
 (function(){var s=document.createElement("script");s.src="inscfix.js?v=1";document.body.appendChild(s)})();
+(function(){var s=document.createElement("script");s.src="voixfina.js?v=1";document.body.appendChild(s)})();
