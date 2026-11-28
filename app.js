@@ -1055,3 +1055,4 @@ if(user&&me)maybeAskLongTerm();
 (function(){var s=document.createElement("script");s.src="activation.js?v=1";document.body.appendChild(s)})();
 (function(){var s=document.createElement("script");s.src="landing.js?v=1";document.body.appendChild(s)})();
 (function(){var s=document.createElement("script");s.src="reco.js?v=1";document.body.appendChild(s)})();
+(function(){var s=document.createElement("script");s.src="diag.js?v=1";document.body.appendChild(s)})();
